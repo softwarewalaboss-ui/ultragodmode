@@ -82,6 +82,43 @@ const rightCards = [
   },
 ];
 
+const quickLoginRoles = [
+  { email: 'boss@softwarewala.net', label: 'Boss', icon: Crown, bg: 'hsl(0, 70%, 50%)' },
+  { email: 'master@softwarewala.net', label: 'Master', icon: Shield, bg: 'hsl(15, 70%, 50%)' },
+  { email: 'superadmin@softwarewala.net', label: 'Super Admin', icon: Shield, bg: 'hsl(30, 70%, 50%)' },
+  { email: 'ceo@softwarewala.net', label: 'CEO', icon: Crown, bg: 'hsl(45, 70%, 45%)' },
+  { email: 'admin@softwarewala.net', label: 'Admin', icon: Shield, bg: 'hsl(200, 60%, 50%)' },
+  { email: 'server@softwarewala.net', label: 'Server', icon: Server, bg: 'hsl(210, 50%, 45%)' },
+  { email: 'ai@softwarewala.net', label: 'AI', icon: Bot, bg: 'hsl(270, 60%, 55%)' },
+  { email: 'api@softwarewala.net', label: 'API Security', icon: Key, bg: 'hsl(340, 60%, 50%)' },
+  { email: 'finance@softwarewala.net', label: 'Finance', icon: Wallet, bg: 'hsl(120, 50%, 40%)' },
+  { email: 'leads@softwarewala.net', label: 'Leads', icon: Target, bg: 'hsl(170, 60%, 40%)' },
+  { email: 'marketing@softwarewala.net', label: 'Marketing', icon: Megaphone, bg: 'hsl(320, 60%, 50%)' },
+  { email: 'seo@softwarewala.net', label: 'SEO', icon: Search, bg: 'hsl(150, 60%, 40%)' },
+  { email: 'support@softwarewala.net', label: 'Support', icon: Headphones, bg: 'hsl(195, 60%, 50%)' },
+  { email: 'cs@softwarewala.net', label: 'Client Success', icon: HeartHandshake, bg: 'hsl(330, 60%, 55%)' },
+  { email: 'performance@softwarewala.net', label: 'Performance', icon: TrendingUp, bg: 'hsl(350, 60%, 50%)' },
+  { email: 'tasks@softwarewala.net', label: 'Tasks', icon: ListTodo, bg: 'hsl(260, 55%, 55%)' },
+  { email: 'franchise@softwarewala.net', label: 'Franchise', icon: Building2, bg: 'hsl(210, 60%, 50%)' },
+  { email: 'reseller@softwarewala.net', label: 'Reseller', icon: Users, bg: 'hsl(180, 60%, 40%)' },
+  { email: 'influencer@softwarewala.net', label: 'Influencer', icon: Sparkles, bg: 'hsl(290, 60%, 55%)' },
+  { email: 'dev@softwarewala.net', label: 'Developer', icon: Code2, bg: 'hsl(250, 55%, 55%)' },
+  { email: 'legal@softwarewala.net', label: 'Legal', icon: Scale, bg: 'hsl(0, 0%, 45%)' },
+  { email: 'hr@softwarewala.net', label: 'HR', icon: UserPlus, bg: 'hsl(25, 70%, 50%)' },
+  { email: 'demo@softwarewala.net', label: 'Demo', icon: Play, bg: 'hsl(275, 55%, 55%)' },
+  { email: 'product@softwarewala.net', label: 'Product', icon: Package, bg: 'hsl(220, 60%, 55%)' },
+  { email: 'prime@softwarewala.net', label: 'Prime', icon: Star, bg: 'hsl(45, 80%, 45%)' },
+  { email: 'user@softwarewala.net', label: 'User', icon: User, bg: 'hsl(200, 40%, 55%)' },
+  { email: 'client@softwarewala.net', label: 'Client', icon: User, bg: 'hsl(160, 50%, 45%)' },
+  { email: 'continent@softwarewala.net', label: 'Continent', icon: Globe, bg: 'hsl(230, 55%, 50%)' },
+  { email: 'country@softwarewala.net', label: 'Country', icon: Globe, bg: 'hsl(200, 55%, 45%)' },
+  { email: 'area@softwarewala.net', label: 'Area', icon: Globe, bg: 'hsl(170, 55%, 45%)' },
+  { email: 'rnd@softwarewala.net', label: 'R&D', icon: Zap, bg: 'hsl(50, 70%, 45%)' },
+  { email: 'promise@softwarewala.net', label: 'Promise', icon: Award, bg: 'hsl(10, 65%, 50%)' },
+  { email: 'assist@softwarewala.net', label: 'Assist', icon: HeartHandshake, bg: 'hsl(190, 55%, 45%)' },
+  { email: 'resellermgr@softwarewala.net', label: 'Reseller Mgr', icon: Users, bg: 'hsl(185, 55%, 40%)' },
+];
+
 const Auth = () => {
   const [isLogin, setIsLogin] = useState(true);
   const [email, setEmail] = useState('');
