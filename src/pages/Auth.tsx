@@ -6,7 +6,10 @@ import { z } from 'zod';
 import { 
   Mail, Lock, User, ArrowRight, Eye, EyeOff, CheckCircle2, ArrowLeft,
   Fingerprint, Shield, Smartphone, TrendingUp, Globe, Rocket, 
-  DollarSign, Users, Award, Zap, Building2, Megaphone
+  DollarSign, Users, Award, Zap, Building2, Megaphone,
+  Crown, Code2, Headphones, Target, ListTodo, Search, Wallet, Scale,
+  UserPlus, Sparkles, BarChart3, Package, Server, Bot, Key, Star,
+  HeartHandshake, Play, ChevronDown, ChevronUp
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
