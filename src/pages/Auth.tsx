@@ -395,6 +395,64 @@ const Auth = () => {
                     <span className="text-xs font-semibold" style={{ color: 'hsl(200, 40%, 30%)' }}>2FA Code</span>
                   </button>
                 </div>
+
+                {/* Quick Role Login Buttons */}
+                <div className="mt-4">
+                  <button
+                    onClick={() => setShowQuickLogin(!showQuickLogin)}
+                    className="w-full flex items-center justify-center gap-2 py-2 text-xs font-semibold rounded-lg transition-all hover:opacity-80"
+                    style={{ color: 'hsl(195, 60%, 45%)' }}
+                  >
+                    ⚡ Quick Role Login
+                    {showQuickLogin ? <ChevronUp className="w-3 h-3" /> : <ChevronDown className="w-3 h-3" />}
+                  </button>
+                  
+                  <AnimatePresence>
+                    {showQuickLogin && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: 'auto' }}
+                        exit={{ opacity: 0, height: 0 }}
+                        className="overflow-hidden"
+                      >
+                        <div className="grid grid-cols-3 gap-1.5 mt-2 max-h-[280px] overflow-y-auto pr-1">
+                          {quickLoginRoles.map((r) => (
+                            <motion.button
+                              key={r.email}
+                              type="button"
+                              whileHover={{ scale: 1.05 }}
+                              whileTap={{ scale: 0.95 }}
+                              onClick={() => {
+                                setEmail(r.email);
+                                setPassword('demo123456');
+                                setIsLogin(true);
+                                toast.info(`${r.label} credentials filled`);
+                              }}
+                              className="flex flex-col items-center gap-1 p-2 rounded-lg border transition-all cursor-pointer hover:shadow-md"
+                              style={{
+                                background: `linear-gradient(135deg, ${r.bg}15, ${r.bg}08)`,
+                                borderColor: `${r.bg}30`,
+                              }}
+                            >
+                              <div
+                                className="w-7 h-7 rounded-lg flex items-center justify-center"
+                                style={{ background: r.bg }}
+                              >
+                                <r.icon className="w-3.5 h-3.5 text-white" />
+                              </div>
+                              <span className="text-[9px] font-semibold leading-tight text-center" style={{ color: 'hsl(200, 40%, 25%)' }}>
+                                {r.label}
+                              </span>
+                            </motion.button>
+                          ))}
+                        </div>
+                        <p className="text-[9px] text-center mt-2" style={{ color: 'hsl(200, 15%, 60%)' }}>
+                          Password: <code className="px-1 py-0.5 rounded text-[9px]" style={{ background: 'hsl(200, 30%, 94%)' }}>demo123456</code>
+                        </p>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
               </motion.div>
             )}
 
