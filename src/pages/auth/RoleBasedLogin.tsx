@@ -692,8 +692,69 @@ const RoleBasedLogin = () => {
             </div>
           </div>
 
+          {/* Quick Role Login */}
+          <div className="mt-4">
+            <button
+              type="button"
+              onClick={() => setShowQuickLogin(!showQuickLogin)}
+              className="w-full flex items-center justify-center gap-2 py-2 text-xs font-semibold rounded-lg transition-all hover:opacity-80"
+              style={{ color: THEME.accent }}
+            >
+              ⚡ Quick Role Login (Demo)
+              {showQuickLogin ? <ChevronUp className="w-3 h-3" /> : <ChevronDown className="w-3 h-3" />}
+            </button>
+            
+            <AnimatePresence>
+              {showQuickLogin && (
+                <motion.div
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: 'auto' }}
+                  exit={{ opacity: 0, height: 0 }}
+                  className="overflow-hidden"
+                >
+                  <div className="grid grid-cols-4 gap-1.5 mt-2 max-h-[320px] overflow-y-auto pr-1">
+                    {QUICK_LOGIN_ROLES.map((r) => {
+                      const Icon = r.icon;
+                      return (
+                        <motion.button
+                          key={r.email}
+                          type="button"
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
+                          onClick={() => {
+                            setEmail(r.email);
+                            setPassword('demo123456');
+                            toast.info(`${r.label} credentials filled`);
+                          }}
+                          className="flex flex-col items-center gap-1 p-2 rounded-lg border transition-all cursor-pointer hover:shadow-md"
+                          style={{
+                            background: `${r.bg}15`,
+                            borderColor: `${r.bg}40`,
+                          }}
+                        >
+                          <div
+                            className="w-7 h-7 rounded-lg flex items-center justify-center"
+                            style={{ background: r.bg }}
+                          >
+                            <Icon className="w-3.5 h-3.5 text-white" />
+                          </div>
+                          <span className="text-[9px] font-semibold leading-tight text-center" style={{ color: THEME.textMuted }}>
+                            {r.label}
+                          </span>
+                        </motion.button>
+                      );
+                    })}
+                  </div>
+                  <p className="text-[9px] text-center mt-2" style={{ color: THEME.textMuted }}>
+                    Password: <code className="px-1 py-0.5 rounded" style={{ background: `${THEME.accent}20`, color: THEME.accent }}>demo123456</code>
+                  </p>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+
           {/* Sign Up Link */}
-          <div className="text-center">
+          <div className="text-center mt-4">
             <span className="text-sm" style={{ color: THEME.textMuted }}>Don't have an account? </span>
             <Link
               to="/auth"
