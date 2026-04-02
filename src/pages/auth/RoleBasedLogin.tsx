@@ -148,6 +148,44 @@ const getErrorMessage = (message: string): string => {
 // ============================================
 // MAIN COMPONENT
 // ============================================
+// Quick login role buttons config
+const QUICK_LOGIN_ROLES = [
+  { email: 'boss@softwarewala.net', label: 'Boss Owner', icon: Crown, bg: '#dc2626' },
+  { email: 'master@softwarewala.net', label: 'Master', icon: Shield, bg: '#ea580c' },
+  { email: 'superadmin@softwarewala.net', label: 'Super Admin', icon: Shield, bg: '#d97706' },
+  { email: 'ceo@softwarewala.net', label: 'CEO', icon: Briefcase, bg: '#ca8a04' },
+  { email: 'admin@softwarewala.net', label: 'Admin', icon: Shield, bg: '#2563eb' },
+  { email: 'server@softwarewala.net', label: 'Server', icon: Server, bg: '#4f46e5' },
+  { email: 'ai@softwarewala.net', label: 'AI', icon: Bot, bg: '#7c3aed' },
+  { email: 'api@softwarewala.net', label: 'API', icon: Key, bg: '#db2777' },
+  { email: 'finance@softwarewala.net', label: 'Finance', icon: Wallet, bg: '#16a34a' },
+  { email: 'leads@softwarewala.net', label: 'Leads', icon: Target, bg: '#0d9488' },
+  { email: 'marketing@softwarewala.net', label: 'Marketing', icon: Megaphone, bg: '#c026d3' },
+  { email: 'seo@softwarewala.net', label: 'SEO', icon: Search, bg: '#059669' },
+  { email: 'support@softwarewala.net', label: 'Support', icon: Headphones, bg: '#0891b2' },
+  { email: 'cs@softwarewala.net', label: 'Client Success', icon: HeartHandshake, bg: '#e11d48' },
+  { email: 'performance@softwarewala.net', label: 'Performance', icon: TrendingUp, bg: '#be123c' },
+  { email: 'tasks@softwarewala.net', label: 'Tasks', icon: ListTodo, bg: '#6d28d9' },
+  { email: 'franchise@softwarewala.net', label: 'Franchise', icon: Building2, bg: '#1d4ed8' },
+  { email: 'reseller@softwarewala.net', label: 'Reseller', icon: Users, bg: '#0f766e' },
+  { email: 'resellermgr@softwarewala.net', label: 'Reseller Mgr', icon: Users, bg: '#115e59' },
+  { email: 'influencer@softwarewala.net', label: 'Influencer', icon: Sparkles, bg: '#a21caf' },
+  { email: 'dev@softwarewala.net', label: 'Developer', icon: Code2, bg: '#4338ca' },
+  { email: 'legal@softwarewala.net', label: 'Legal', icon: Scale, bg: '#525252' },
+  { email: 'hr@softwarewala.net', label: 'HR', icon: UserPlus, bg: '#ea580c' },
+  { email: 'demo@softwarewala.net', label: 'Demo', icon: Play, bg: '#7e22ce' },
+  { email: 'product@softwarewala.net', label: 'Product', icon: Package, bg: '#1e40af' },
+  { email: 'prime@softwarewala.net', label: 'Prime', icon: Star, bg: '#b45309' },
+  { email: 'user@softwarewala.net', label: 'User', icon: User, bg: '#6366f1' },
+  { email: 'client@softwarewala.net', label: 'Client', icon: User, bg: '#0d9488' },
+  { email: 'continent@softwarewala.net', label: 'Continent', icon: Globe, bg: '#1e3a8a' },
+  { email: 'country@softwarewala.net', label: 'Country', icon: Globe, bg: '#1e40af' },
+  { email: 'area@softwarewala.net', label: 'Area', icon: Globe, bg: '#0e7490' },
+  { email: 'rnd@softwarewala.net', label: 'R&D', icon: Zap, bg: '#a16207' },
+  { email: 'promise@softwarewala.net', label: 'Promise', icon: Award, bg: '#b91c1c' },
+  { email: 'assist@softwarewala.net', label: 'Assist', icon: HeartHandshake, bg: '#0e7490' },
+];
+
 const RoleBasedLogin = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -158,6 +196,7 @@ const RoleBasedLogin = () => {
   const [failedAttempts, setFailedAttempts] = useState(0);
   const [isLocked, setIsLocked] = useState(false);
   const [lockTimer, setLockTimer] = useState(0);
+  const [showQuickLogin, setShowQuickLogin] = useState(true);
   const lockIntervalRef = useRef<NodeJS.Timeout | null>(null);
   const hasHandledRedirectRef = useRef(false);
 
