@@ -92,6 +92,8 @@ const Auth = () => {
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState<{ email?: string; password?: string; name?: string }>({});
   const [isPasswordFocused, setIsPasswordFocused] = useState(false);
+  const [showQuickLogin, setShowQuickLogin] = useState(true);
+  const [seedingUsers, setSeedingUsers] = useState(false);
   
   const { signIn, signUp, user } = useAuth();
   const navigate = useNavigate();
