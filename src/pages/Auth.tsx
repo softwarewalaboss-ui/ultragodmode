@@ -6,7 +6,10 @@ import { z } from 'zod';
 import { 
   Mail, Lock, User, ArrowRight, Eye, EyeOff, CheckCircle2, ArrowLeft,
   Fingerprint, Shield, Smartphone, TrendingUp, Globe, Rocket, 
-  DollarSign, Users, Award, Zap, Building2, Megaphone
+  DollarSign, Users, Award, Zap, Building2, Megaphone,
+  Crown, Code2, Headphones, Target, ListTodo, Search, Wallet, Scale,
+  UserPlus, Sparkles, BarChart3, Package, Server, Bot, Key, Star,
+  HeartHandshake, Play, ChevronDown, ChevronUp
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -79,6 +82,43 @@ const rightCards = [
   },
 ];
 
+const quickLoginRoles = [
+  { email: 'boss@softwarewala.net', label: 'Boss', icon: Crown, bg: 'hsl(0, 70%, 50%)' },
+  { email: 'master@softwarewala.net', label: 'Master', icon: Shield, bg: 'hsl(15, 70%, 50%)' },
+  { email: 'superadmin@softwarewala.net', label: 'Super Admin', icon: Shield, bg: 'hsl(30, 70%, 50%)' },
+  { email: 'ceo@softwarewala.net', label: 'CEO', icon: Crown, bg: 'hsl(45, 70%, 45%)' },
+  { email: 'admin@softwarewala.net', label: 'Admin', icon: Shield, bg: 'hsl(200, 60%, 50%)' },
+  { email: 'server@softwarewala.net', label: 'Server', icon: Server, bg: 'hsl(210, 50%, 45%)' },
+  { email: 'ai@softwarewala.net', label: 'AI', icon: Bot, bg: 'hsl(270, 60%, 55%)' },
+  { email: 'api@softwarewala.net', label: 'API Security', icon: Key, bg: 'hsl(340, 60%, 50%)' },
+  { email: 'finance@softwarewala.net', label: 'Finance', icon: Wallet, bg: 'hsl(120, 50%, 40%)' },
+  { email: 'leads@softwarewala.net', label: 'Leads', icon: Target, bg: 'hsl(170, 60%, 40%)' },
+  { email: 'marketing@softwarewala.net', label: 'Marketing', icon: Megaphone, bg: 'hsl(320, 60%, 50%)' },
+  { email: 'seo@softwarewala.net', label: 'SEO', icon: Search, bg: 'hsl(150, 60%, 40%)' },
+  { email: 'support@softwarewala.net', label: 'Support', icon: Headphones, bg: 'hsl(195, 60%, 50%)' },
+  { email: 'cs@softwarewala.net', label: 'Client Success', icon: HeartHandshake, bg: 'hsl(330, 60%, 55%)' },
+  { email: 'performance@softwarewala.net', label: 'Performance', icon: TrendingUp, bg: 'hsl(350, 60%, 50%)' },
+  { email: 'tasks@softwarewala.net', label: 'Tasks', icon: ListTodo, bg: 'hsl(260, 55%, 55%)' },
+  { email: 'franchise@softwarewala.net', label: 'Franchise', icon: Building2, bg: 'hsl(210, 60%, 50%)' },
+  { email: 'reseller@softwarewala.net', label: 'Reseller', icon: Users, bg: 'hsl(180, 60%, 40%)' },
+  { email: 'influencer@softwarewala.net', label: 'Influencer', icon: Sparkles, bg: 'hsl(290, 60%, 55%)' },
+  { email: 'dev@softwarewala.net', label: 'Developer', icon: Code2, bg: 'hsl(250, 55%, 55%)' },
+  { email: 'legal@softwarewala.net', label: 'Legal', icon: Scale, bg: 'hsl(0, 0%, 45%)' },
+  { email: 'hr@softwarewala.net', label: 'HR', icon: UserPlus, bg: 'hsl(25, 70%, 50%)' },
+  { email: 'demo@softwarewala.net', label: 'Demo', icon: Play, bg: 'hsl(275, 55%, 55%)' },
+  { email: 'product@softwarewala.net', label: 'Product', icon: Package, bg: 'hsl(220, 60%, 55%)' },
+  { email: 'prime@softwarewala.net', label: 'Prime', icon: Star, bg: 'hsl(45, 80%, 45%)' },
+  { email: 'user@softwarewala.net', label: 'User', icon: User, bg: 'hsl(200, 40%, 55%)' },
+  { email: 'client@softwarewala.net', label: 'Client', icon: User, bg: 'hsl(160, 50%, 45%)' },
+  { email: 'continent@softwarewala.net', label: 'Continent', icon: Globe, bg: 'hsl(230, 55%, 50%)' },
+  { email: 'country@softwarewala.net', label: 'Country', icon: Globe, bg: 'hsl(200, 55%, 45%)' },
+  { email: 'area@softwarewala.net', label: 'Area', icon: Globe, bg: 'hsl(170, 55%, 45%)' },
+  { email: 'rnd@softwarewala.net', label: 'R&D', icon: Zap, bg: 'hsl(50, 70%, 45%)' },
+  { email: 'promise@softwarewala.net', label: 'Promise', icon: Award, bg: 'hsl(10, 65%, 50%)' },
+  { email: 'assist@softwarewala.net', label: 'Assist', icon: HeartHandshake, bg: 'hsl(190, 55%, 45%)' },
+  { email: 'resellermgr@softwarewala.net', label: 'Reseller Mgr', icon: Users, bg: 'hsl(185, 55%, 40%)' },
+];
+
 const Auth = () => {
   const [isLogin, setIsLogin] = useState(true);
   const [email, setEmail] = useState('');
@@ -89,6 +129,8 @@ const Auth = () => {
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState<{ email?: string; password?: string; name?: string }>({});
   const [isPasswordFocused, setIsPasswordFocused] = useState(false);
+  const [showQuickLogin, setShowQuickLogin] = useState(true);
+  const [seedingUsers, setSeedingUsers] = useState(false);
   
   const { signIn, signUp, user } = useAuth();
   const navigate = useNavigate();
@@ -389,6 +431,64 @@ const Auth = () => {
                     <Smartphone className="w-4 h-4" style={{ color: 'hsl(260, 50%, 55%)' }} />
                     <span className="text-xs font-semibold" style={{ color: 'hsl(200, 40%, 30%)' }}>2FA Code</span>
                   </button>
+                </div>
+
+                {/* Quick Role Login Buttons */}
+                <div className="mt-4">
+                  <button
+                    onClick={() => setShowQuickLogin(!showQuickLogin)}
+                    className="w-full flex items-center justify-center gap-2 py-2 text-xs font-semibold rounded-lg transition-all hover:opacity-80"
+                    style={{ color: 'hsl(195, 60%, 45%)' }}
+                  >
+                    ⚡ Quick Role Login
+                    {showQuickLogin ? <ChevronUp className="w-3 h-3" /> : <ChevronDown className="w-3 h-3" />}
+                  </button>
+                  
+                  <AnimatePresence>
+                    {showQuickLogin && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: 'auto' }}
+                        exit={{ opacity: 0, height: 0 }}
+                        className="overflow-hidden"
+                      >
+                        <div className="grid grid-cols-3 gap-1.5 mt-2 max-h-[280px] overflow-y-auto pr-1">
+                          {quickLoginRoles.map((r) => (
+                            <motion.button
+                              key={r.email}
+                              type="button"
+                              whileHover={{ scale: 1.05 }}
+                              whileTap={{ scale: 0.95 }}
+                              onClick={() => {
+                                setEmail(r.email);
+                                setPassword('demo123456');
+                                setIsLogin(true);
+                                toast.info(`${r.label} credentials filled`);
+                              }}
+                              className="flex flex-col items-center gap-1 p-2 rounded-lg border transition-all cursor-pointer hover:shadow-md"
+                              style={{
+                                background: `linear-gradient(135deg, ${r.bg}15, ${r.bg}08)`,
+                                borderColor: `${r.bg}30`,
+                              }}
+                            >
+                              <div
+                                className="w-7 h-7 rounded-lg flex items-center justify-center"
+                                style={{ background: r.bg }}
+                              >
+                                <r.icon className="w-3.5 h-3.5 text-white" />
+                              </div>
+                              <span className="text-[9px] font-semibold leading-tight text-center" style={{ color: 'hsl(200, 40%, 25%)' }}>
+                                {r.label}
+                              </span>
+                            </motion.button>
+                          ))}
+                        </div>
+                        <p className="text-[9px] text-center mt-2" style={{ color: 'hsl(200, 15%, 60%)' }}>
+                          Password: <code className="px-1 py-0.5 rounded text-[9px]" style={{ background: 'hsl(200, 30%, 94%)' }}>demo123456</code>
+                        </p>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </div>
               </motion.div>
             )}

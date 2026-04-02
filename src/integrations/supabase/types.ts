@@ -14,16 +14,175 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      profiles: {
+        Row: {
+          avatar_url: string | null
+          created_at: string
+          email: string | null
+          full_name: string | null
+          id: string
+          updated_at: string
+        }
+        Insert: {
+          avatar_url?: string | null
+          created_at?: string
+          email?: string | null
+          full_name?: string | null
+          id: string
+          updated_at?: string
+        }
+        Update: {
+          avatar_url?: string | null
+          created_at?: string
+          email?: string | null
+          full_name?: string | null
+          id?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      user_roles: {
+        Row: {
+          approval_status: string
+          created_at: string
+          force_logged_out_at: string | null
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          approval_status?: string
+          created_at?: string
+          force_logged_out_at?: string | null
+          id?: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          approval_status?: string
+          created_at?: string
+          force_logged_out_at?: string | null
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
+      user_sessions: {
+        Row: {
+          auth_strength: string | null
+          browser: string | null
+          created_at: string
+          device_fingerprint: string | null
+          device_info: string | null
+          expires_at: string | null
+          forced_reauth: boolean | null
+          id: string
+          ip_address: string | null
+          is_active: boolean | null
+          last_activity_at: string | null
+          login_at: string | null
+          logout_at: string | null
+          os: string | null
+          revoked_reason: string | null
+          risk_score: number | null
+          session_token_hash: string | null
+          user_id: string
+        }
+        Insert: {
+          auth_strength?: string | null
+          browser?: string | null
+          created_at?: string
+          device_fingerprint?: string | null
+          device_info?: string | null
+          expires_at?: string | null
+          forced_reauth?: boolean | null
+          id?: string
+          ip_address?: string | null
+          is_active?: boolean | null
+          last_activity_at?: string | null
+          login_at?: string | null
+          logout_at?: string | null
+          os?: string | null
+          revoked_reason?: string | null
+          risk_score?: number | null
+          session_token_hash?: string | null
+          user_id: string
+        }
+        Update: {
+          auth_strength?: string | null
+          browser?: string | null
+          created_at?: string
+          device_fingerprint?: string | null
+          device_info?: string | null
+          expires_at?: string | null
+          forced_reauth?: boolean | null
+          id?: string
+          ip_address?: string | null
+          is_active?: boolean | null
+          last_activity_at?: string | null
+          login_at?: string | null
+          logout_at?: string | null
+          os?: string | null
+          revoked_reason?: string | null
+          risk_score?: number | null
+          session_token_hash?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      has_role: {
+        Args: {
+          _role: Database["public"]["Enums"]["app_role"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
     }
     Enums: {
-      [_ in never]: never
+      app_role:
+        | "boss_owner"
+        | "master"
+        | "super_admin"
+        | "ceo"
+        | "admin"
+        | "continent_super_admin"
+        | "country_head"
+        | "area_manager"
+        | "server_manager"
+        | "ai_manager"
+        | "api_security"
+        | "r_and_d"
+        | "rnd_manager"
+        | "finance_manager"
+        | "lead_manager"
+        | "marketing_manager"
+        | "seo_manager"
+        | "client_success"
+        | "performance_manager"
+        | "support"
+        | "safe_assist"
+        | "assist_manager"
+        | "promise_tracker"
+        | "promise_management"
+        | "demo_manager"
+        | "product_demo_manager"
+        | "task_manager"
+        | "hr_manager"
+        | "legal_compliance"
+        | "franchise"
+        | "reseller"
+        | "reseller_manager"
+        | "influencer"
+        | "developer"
+        | "prime"
+        | "user"
+        | "client"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +309,46 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      app_role: [
+        "boss_owner",
+        "master",
+        "super_admin",
+        "ceo",
+        "admin",
+        "continent_super_admin",
+        "country_head",
+        "area_manager",
+        "server_manager",
+        "ai_manager",
+        "api_security",
+        "r_and_d",
+        "rnd_manager",
+        "finance_manager",
+        "lead_manager",
+        "marketing_manager",
+        "seo_manager",
+        "client_success",
+        "performance_manager",
+        "support",
+        "safe_assist",
+        "assist_manager",
+        "promise_tracker",
+        "promise_management",
+        "demo_manager",
+        "product_demo_manager",
+        "task_manager",
+        "hr_manager",
+        "legal_compliance",
+        "franchise",
+        "reseller",
+        "reseller_manager",
+        "influencer",
+        "developer",
+        "prime",
+        "user",
+        "client",
+      ],
+    },
   },
 } as const
