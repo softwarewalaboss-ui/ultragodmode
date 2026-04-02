@@ -17,7 +17,10 @@ import {
   Mail, Lock, Eye, EyeOff, ArrowRight, Shield, 
   Loader2, AlertCircle, CheckCircle2, Zap,
   Crown, User, Globe, Server, Bot, Package, Users,
-  Briefcase, HeadphonesIcon, Store, UserCircle
+  Briefcase, HeadphonesIcon, Store, UserCircle,
+  ChevronDown, ChevronUp, Code2, Target, Megaphone,
+  Search, Headphones, HeartHandshake, TrendingUp, ListTodo,
+  Building2, Sparkles, Scale, UserPlus, Play, Star, Wallet, Key, Award, BarChart3
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
