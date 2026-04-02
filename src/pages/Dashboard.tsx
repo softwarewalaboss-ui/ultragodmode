@@ -111,7 +111,7 @@ const Dashboard = () => {
           <p className="text-muted-foreground mt-1">{getStatusMessage()}</p>
           {userRole && (
             <p className="text-xs text-muted-foreground/70 mt-2">
-              Role: {userRole} | Status: {approvalStatus || 'checking'}
+              Role: {userRole} | Status: checking
             </p>
           )}
         </div>
