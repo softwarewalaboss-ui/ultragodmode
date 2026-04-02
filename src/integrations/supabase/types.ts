@@ -14,6 +14,224 @@ export type Database = {
   }
   public: {
     Tables: {
+      audit_logs: {
+        Row: {
+          action: string
+          created_at: string
+          id: string
+          ip_address: string | null
+          meta_json: Json | null
+          module: string | null
+          role: string | null
+          user_id: string | null
+        }
+        Insert: {
+          action: string
+          created_at?: string
+          id?: string
+          ip_address?: string | null
+          meta_json?: Json | null
+          module?: string | null
+          role?: string | null
+          user_id?: string | null
+        }
+        Update: {
+          action?: string
+          created_at?: string
+          id?: string
+          ip_address?: string | null
+          meta_json?: Json | null
+          module?: string | null
+          role?: string | null
+          user_id?: string | null
+        }
+        Relationships: []
+      }
+      developers: {
+        Row: {
+          availability_status: string | null
+          created_at: string
+          experience_level: string | null
+          github_username: string | null
+          hourly_rate: number | null
+          id: string
+          rating: number | null
+          skills: string[] | null
+          total_tasks_completed: number | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          availability_status?: string | null
+          created_at?: string
+          experience_level?: string | null
+          github_username?: string | null
+          hourly_rate?: number | null
+          id?: string
+          rating?: number | null
+          skills?: string[] | null
+          total_tasks_completed?: number | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          availability_status?: string | null
+          created_at?: string
+          experience_level?: string | null
+          github_username?: string | null
+          hourly_rate?: number | null
+          id?: string
+          rating?: number | null
+          skills?: string[] | null
+          total_tasks_completed?: number | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      franchise_accounts: {
+        Row: {
+          activated_at: string | null
+          city: string | null
+          commission_rate: number | null
+          country: string | null
+          created_at: string
+          franchise_name: string
+          id: string
+          license_key: string | null
+          status: string | null
+          territory: string | null
+          total_clients: number | null
+          total_revenue: number | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          activated_at?: string | null
+          city?: string | null
+          commission_rate?: number | null
+          country?: string | null
+          created_at?: string
+          franchise_name: string
+          id?: string
+          license_key?: string | null
+          status?: string | null
+          territory?: string | null
+          total_clients?: number | null
+          total_revenue?: number | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          activated_at?: string | null
+          city?: string | null
+          commission_rate?: number | null
+          country?: string | null
+          created_at?: string
+          franchise_name?: string
+          id?: string
+          license_key?: string | null
+          status?: string | null
+          territory?: string | null
+          total_clients?: number | null
+          total_revenue?: number | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      influencer_accounts: {
+        Row: {
+          commission_rate: number | null
+          created_at: string
+          followers_count: number | null
+          id: string
+          platform: string | null
+          referral_code: string | null
+          status: string | null
+          total_earnings: number | null
+          total_referrals: number | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          commission_rate?: number | null
+          created_at?: string
+          followers_count?: number | null
+          id?: string
+          platform?: string | null
+          referral_code?: string | null
+          status?: string | null
+          total_earnings?: number | null
+          total_referrals?: number | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          commission_rate?: number | null
+          created_at?: string
+          followers_count?: number | null
+          id?: string
+          platform?: string | null
+          referral_code?: string | null
+          status?: string | null
+          total_earnings?: number | null
+          total_referrals?: number | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      licenses: {
+        Row: {
+          activated_at: string | null
+          created_at: string
+          device_id: string | null
+          expires_at: string | null
+          id: string
+          license_key: string
+          license_type: string | null
+          max_devices: number | null
+          software_id: string | null
+          status: string | null
+          user_id: string | null
+        }
+        Insert: {
+          activated_at?: string | null
+          created_at?: string
+          device_id?: string | null
+          expires_at?: string | null
+          id?: string
+          license_key: string
+          license_type?: string | null
+          max_devices?: number | null
+          software_id?: string | null
+          status?: string | null
+          user_id?: string | null
+        }
+        Update: {
+          activated_at?: string | null
+          created_at?: string
+          device_id?: string | null
+          expires_at?: string | null
+          id?: string
+          license_key?: string
+          license_type?: string | null
+          max_devices?: number | null
+          software_id?: string | null
+          status?: string | null
+          user_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "licenses_software_id_fkey"
+            columns: ["software_id"]
+            isOneToOne: false
+            referencedRelation: "software_catalog"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       profiles: {
         Row: {
           avatar_url: string | null
@@ -37,6 +255,192 @@ export type Database = {
           email?: string | null
           full_name?: string | null
           id?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      reseller_accounts: {
+        Row: {
+          active_licenses: number | null
+          commission_rate: number | null
+          company_name: string | null
+          created_at: string
+          id: string
+          parent_reseller_id: string | null
+          reseller_type: string | null
+          status: string | null
+          total_sales: number | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          active_licenses?: number | null
+          commission_rate?: number | null
+          company_name?: string | null
+          created_at?: string
+          id?: string
+          parent_reseller_id?: string | null
+          reseller_type?: string | null
+          status?: string | null
+          total_sales?: number | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          active_licenses?: number | null
+          commission_rate?: number | null
+          company_name?: string | null
+          created_at?: string
+          id?: string
+          parent_reseller_id?: string | null
+          reseller_type?: string | null
+          status?: string | null
+          total_sales?: number | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      software_catalog: {
+        Row: {
+          category: string | null
+          created_at: string
+          created_by: string | null
+          demo_url: string | null
+          description: string | null
+          downloads: number | null
+          id: string
+          license_type: string | null
+          price: number | null
+          rating: number | null
+          slug: string | null
+          status: string | null
+          thumbnail_url: string | null
+          title: string
+          updated_at: string
+          version: string | null
+        }
+        Insert: {
+          category?: string | null
+          created_at?: string
+          created_by?: string | null
+          demo_url?: string | null
+          description?: string | null
+          downloads?: number | null
+          id?: string
+          license_type?: string | null
+          price?: number | null
+          rating?: number | null
+          slug?: string | null
+          status?: string | null
+          thumbnail_url?: string | null
+          title: string
+          updated_at?: string
+          version?: string | null
+        }
+        Update: {
+          category?: string | null
+          created_at?: string
+          created_by?: string | null
+          demo_url?: string | null
+          description?: string | null
+          downloads?: number | null
+          id?: string
+          license_type?: string | null
+          price?: number | null
+          rating?: number | null
+          slug?: string | null
+          status?: string | null
+          thumbnail_url?: string | null
+          title?: string
+          updated_at?: string
+          version?: string | null
+        }
+        Relationships: []
+      }
+      support_tickets: {
+        Row: {
+          assigned_to: string | null
+          category: string | null
+          created_at: string
+          description: string | null
+          id: string
+          priority: string | null
+          resolved_at: string | null
+          status: string | null
+          subject: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          assigned_to?: string | null
+          category?: string | null
+          created_at?: string
+          description?: string | null
+          id?: string
+          priority?: string | null
+          resolved_at?: string | null
+          status?: string | null
+          subject: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          assigned_to?: string | null
+          category?: string | null
+          created_at?: string
+          description?: string | null
+          id?: string
+          priority?: string | null
+          resolved_at?: string | null
+          status?: string | null
+          subject?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      tasks: {
+        Row: {
+          assigned_to: string | null
+          completed_at: string | null
+          created_at: string
+          created_by: string | null
+          description: string | null
+          due_date: string | null
+          id: string
+          priority: string | null
+          project: string | null
+          status: string | null
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          assigned_to?: string | null
+          completed_at?: string | null
+          created_at?: string
+          created_by?: string | null
+          description?: string | null
+          due_date?: string | null
+          id?: string
+          priority?: string | null
+          project?: string | null
+          status?: string | null
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          assigned_to?: string | null
+          completed_at?: string | null
+          created_at?: string
+          created_by?: string | null
+          description?: string | null
+          due_date?: string | null
+          id?: string
+          priority?: string | null
+          project?: string | null
+          status?: string | null
+          title?: string
           updated_at?: string
         }
         Relationships: []

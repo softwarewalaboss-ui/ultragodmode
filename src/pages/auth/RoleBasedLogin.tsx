@@ -17,7 +17,10 @@ import {
   Mail, Lock, Eye, EyeOff, ArrowRight, Shield, 
   Loader2, AlertCircle, CheckCircle2, Zap,
   Crown, User, Globe, Server, Bot, Package, Users,
-  Briefcase, HeadphonesIcon, Store, UserCircle
+  Briefcase, HeadphonesIcon, Store, UserCircle,
+  ChevronDown, ChevronUp, Code2, Target, Megaphone,
+  Search, Headphones, HeartHandshake, TrendingUp, ListTodo,
+  Building2, Sparkles, Scale, UserPlus, Play, Star, Wallet, Key, Award, BarChart3
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -145,6 +148,44 @@ const getErrorMessage = (message: string): string => {
 // ============================================
 // MAIN COMPONENT
 // ============================================
+// Quick login role buttons config
+const QUICK_LOGIN_ROLES = [
+  { email: 'boss@softwarewala.net', label: 'Boss Owner', icon: Crown, bg: '#dc2626' },
+  { email: 'master@softwarewala.net', label: 'Master', icon: Shield, bg: '#ea580c' },
+  { email: 'superadmin@softwarewala.net', label: 'Super Admin', icon: Shield, bg: '#d97706' },
+  { email: 'ceo@softwarewala.net', label: 'CEO', icon: Briefcase, bg: '#ca8a04' },
+  { email: 'admin@softwarewala.net', label: 'Admin', icon: Shield, bg: '#2563eb' },
+  { email: 'server@softwarewala.net', label: 'Server', icon: Server, bg: '#4f46e5' },
+  { email: 'ai@softwarewala.net', label: 'AI', icon: Bot, bg: '#7c3aed' },
+  { email: 'api@softwarewala.net', label: 'API', icon: Key, bg: '#db2777' },
+  { email: 'finance@softwarewala.net', label: 'Finance', icon: Wallet, bg: '#16a34a' },
+  { email: 'leads@softwarewala.net', label: 'Leads', icon: Target, bg: '#0d9488' },
+  { email: 'marketing@softwarewala.net', label: 'Marketing', icon: Megaphone, bg: '#c026d3' },
+  { email: 'seo@softwarewala.net', label: 'SEO', icon: Search, bg: '#059669' },
+  { email: 'support@softwarewala.net', label: 'Support', icon: Headphones, bg: '#0891b2' },
+  { email: 'cs@softwarewala.net', label: 'Client Success', icon: HeartHandshake, bg: '#e11d48' },
+  { email: 'performance@softwarewala.net', label: 'Performance', icon: TrendingUp, bg: '#be123c' },
+  { email: 'tasks@softwarewala.net', label: 'Tasks', icon: ListTodo, bg: '#6d28d9' },
+  { email: 'franchise@softwarewala.net', label: 'Franchise', icon: Building2, bg: '#1d4ed8' },
+  { email: 'reseller@softwarewala.net', label: 'Reseller', icon: Users, bg: '#0f766e' },
+  { email: 'resellermgr@softwarewala.net', label: 'Reseller Mgr', icon: Users, bg: '#115e59' },
+  { email: 'influencer@softwarewala.net', label: 'Influencer', icon: Sparkles, bg: '#a21caf' },
+  { email: 'dev@softwarewala.net', label: 'Developer', icon: Code2, bg: '#4338ca' },
+  { email: 'legal@softwarewala.net', label: 'Legal', icon: Scale, bg: '#525252' },
+  { email: 'hr@softwarewala.net', label: 'HR', icon: UserPlus, bg: '#ea580c' },
+  { email: 'demo@softwarewala.net', label: 'Demo', icon: Play, bg: '#7e22ce' },
+  { email: 'product@softwarewala.net', label: 'Product', icon: Package, bg: '#1e40af' },
+  { email: 'prime@softwarewala.net', label: 'Prime', icon: Star, bg: '#b45309' },
+  { email: 'user@softwarewala.net', label: 'User', icon: User, bg: '#6366f1' },
+  { email: 'client@softwarewala.net', label: 'Client', icon: User, bg: '#0d9488' },
+  { email: 'continent@softwarewala.net', label: 'Continent', icon: Globe, bg: '#1e3a8a' },
+  { email: 'country@softwarewala.net', label: 'Country', icon: Globe, bg: '#1e40af' },
+  { email: 'area@softwarewala.net', label: 'Area', icon: Globe, bg: '#0e7490' },
+  { email: 'rnd@softwarewala.net', label: 'R&D', icon: Zap, bg: '#a16207' },
+  { email: 'promise@softwarewala.net', label: 'Promise', icon: Award, bg: '#b91c1c' },
+  { email: 'assist@softwarewala.net', label: 'Assist', icon: HeartHandshake, bg: '#0e7490' },
+];
+
 const RoleBasedLogin = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -155,6 +196,7 @@ const RoleBasedLogin = () => {
   const [failedAttempts, setFailedAttempts] = useState(0);
   const [isLocked, setIsLocked] = useState(false);
   const [lockTimer, setLockTimer] = useState(0);
+  const [showQuickLogin, setShowQuickLogin] = useState(true);
   const lockIntervalRef = useRef<NodeJS.Timeout | null>(null);
   const hasHandledRedirectRef = useRef(false);
 
@@ -650,8 +692,69 @@ const RoleBasedLogin = () => {
             </div>
           </div>
 
+          {/* Quick Role Login */}
+          <div className="mt-4">
+            <button
+              type="button"
+              onClick={() => setShowQuickLogin(!showQuickLogin)}
+              className="w-full flex items-center justify-center gap-2 py-2 text-xs font-semibold rounded-lg transition-all hover:opacity-80"
+              style={{ color: THEME.accent }}
+            >
+              ⚡ Quick Role Login (Demo)
+              {showQuickLogin ? <ChevronUp className="w-3 h-3" /> : <ChevronDown className="w-3 h-3" />}
+            </button>
+            
+            <AnimatePresence>
+              {showQuickLogin && (
+                <motion.div
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: 'auto' }}
+                  exit={{ opacity: 0, height: 0 }}
+                  className="overflow-hidden"
+                >
+                  <div className="grid grid-cols-4 gap-1.5 mt-2 max-h-[320px] overflow-y-auto pr-1">
+                    {QUICK_LOGIN_ROLES.map((r) => {
+                      const Icon = r.icon;
+                      return (
+                        <motion.button
+                          key={r.email}
+                          type="button"
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
+                          onClick={() => {
+                            setEmail(r.email);
+                            setPassword('demo123456');
+                            toast.info(`${r.label} credentials filled`);
+                          }}
+                          className="flex flex-col items-center gap-1 p-2 rounded-lg border transition-all cursor-pointer hover:shadow-md"
+                          style={{
+                            background: `${r.bg}15`,
+                            borderColor: `${r.bg}40`,
+                          }}
+                        >
+                          <div
+                            className="w-7 h-7 rounded-lg flex items-center justify-center"
+                            style={{ background: r.bg }}
+                          >
+                            <Icon className="w-3.5 h-3.5 text-white" />
+                          </div>
+                          <span className="text-[9px] font-semibold leading-tight text-center" style={{ color: THEME.textMuted }}>
+                            {r.label}
+                          </span>
+                        </motion.button>
+                      );
+                    })}
+                  </div>
+                  <p className="text-[9px] text-center mt-2" style={{ color: THEME.textMuted }}>
+                    Password: <code className="px-1 py-0.5 rounded" style={{ background: `${THEME.accent}20`, color: THEME.accent }}>demo123456</code>
+                  </p>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+
           {/* Sign Up Link */}
-          <div className="text-center">
+          <div className="text-center mt-4">
             <span className="text-sm" style={{ color: THEME.textMuted }}>Don't have an account? </span>
             <Link
               to="/auth"
