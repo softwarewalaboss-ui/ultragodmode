@@ -645,7 +645,11 @@ const App = () => (
               {/* Bulk Actions Reference */}
               <Route path="/bulk-actions" element={<BulkActionsReference />} />
 
-                          {/* Catch-all */}
+              {/* UNIFIED CONTROL PANEL ROUTES - All modules via /control-panel/:module */}
+              <Route path="/control-panel" element={<RequireAuth><ControlPanelRouter /></RequireAuth>} />
+              <Route path="/control-panel/:module" element={<RequireAuth><ControlPanelRouter /></RequireAuth>} />
+
+              {/* Catch-all */}
                           <Route path="*" element={<NotFound />} />
                         </Routes>
                         <AdminQuickAccess />
