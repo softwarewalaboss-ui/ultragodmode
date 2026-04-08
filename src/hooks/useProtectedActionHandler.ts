@@ -172,9 +172,6 @@ export const useProtectedActionHandler = () => {
 
     // Notification handled in-memory
     console.debug(`Protected action: ${config.label}`);
-    } catch (error) {
-      console.error('Failed to create action notification:', error);
-    }
 
     navigate(config.route);
   }, [approvedRoles, navigate, switchRole, user, userRole, userRoles]);
