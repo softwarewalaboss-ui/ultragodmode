@@ -206,6 +206,7 @@ import ValaMasterWorkspace from "@/pages/vala-control/ValaMasterWorkspace";
 import ValaOperationWorkspace from "@/pages/vala-control/ValaOperationWorkspace";
 import ValaRegionalWorkspace from "@/pages/vala-control/ValaRegionalWorkspace";
 import { WireframeRoutes } from "@/components/wireframe/WireframeRoutes";
+import ControlPanelRouter from "@/pages/control-panel/ControlPanelRouter";
 
 import { TooltipProvider } from "@/components/ui/tooltip";
 
@@ -644,7 +645,11 @@ const App = () => (
               {/* Bulk Actions Reference */}
               <Route path="/bulk-actions" element={<BulkActionsReference />} />
 
-                          {/* Catch-all */}
+              {/* UNIFIED CONTROL PANEL ROUTES - All modules via /control-panel/:module */}
+              <Route path="/control-panel" element={<RequireAuth><ControlPanelRouter /></RequireAuth>} />
+              <Route path="/control-panel/:module" element={<RequireAuth><ControlPanelRouter /></RequireAuth>} />
+
+              {/* Catch-all */}
                           <Route path="*" element={<NotFound />} />
                         </Routes>
                         <AdminQuickAccess />
