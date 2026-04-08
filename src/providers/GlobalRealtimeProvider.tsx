@@ -101,8 +101,7 @@ export const GlobalRealtimeProvider: React.FC<{ children: React.ReactNode }> = (
       user_online_status: ['online-users', 'user-status'],
       dev_timer: ['dev-timer', 'timer-state'],
       user_roles: ['user-roles', 'current-role'],
-      error_logs: ['error-logs', 'system-health', 'monitoring'],
-      system_logs: ['system-logs', 'monitoring']
+      audit_logs: ['audit-logs', 'system-health', 'monitoring']
     };
 
     const keysToInvalidate = queryKeyMap[table] || [table];
@@ -127,9 +126,8 @@ export const GlobalRealtimeProvider: React.FC<{ children: React.ReactNode }> = (
       } else if (table === 'developer_violations') {
         toast.error('Violation recorded', { duration: 5000 });
         playSound('error');
-      } else if (table === 'error_logs') {
-        toast.error('System failure detected and queued for auto-heal', { duration: 5000 });
-        playSound('error');
+      } else if (table === 'audit_logs') {
+        // System event logged
       }
     }
   }, [queryClient, notifySubscribers]);
@@ -170,8 +168,7 @@ export const GlobalRealtimeProvider: React.FC<{ children: React.ReactNode }> = (
       'user_online_status',
       'dev_timer',
       'user_roles',
-      'error_logs',
-      'system_logs'
+      'audit_logs'
     ];
 
     tables.forEach(table => {

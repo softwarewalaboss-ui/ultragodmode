@@ -204,10 +204,13 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     }
   }, []);
 
-  // Clear force logout flag when user signs in
+  // Clear force logout flag when user signs in (direct table update)
   const clearForceLogout = useCallback(async (userId: string) => {
     try {
-      await supabase.rpc('clear_force_logout', { clear_user_id: userId });
+      await supabase
+        .from('user_roles')
+        .update({ force_logged_out_at: null })
+        .eq('user_id', userId);
       setWasForceLoggedOut(false);
     } catch (err) {
       // Silent fail
