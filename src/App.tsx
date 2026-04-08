@@ -206,6 +206,7 @@ import ValaMasterWorkspace from "@/pages/vala-control/ValaMasterWorkspace";
 import ValaOperationWorkspace from "@/pages/vala-control/ValaOperationWorkspace";
 import ValaRegionalWorkspace from "@/pages/vala-control/ValaRegionalWorkspace";
 import { WireframeRoutes } from "@/components/wireframe/WireframeRoutes";
+import ControlPanelRouter from "@/pages/control-panel/ControlPanelRouter";
 
 import { TooltipProvider } from "@/components/ui/tooltip";
 
