@@ -183,14 +183,17 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     setApprovalStatus(activeAssignment?.approvalStatus ?? null);
   }, [roleAssignments, userRole]);
 
-  // Check if user was force logged out
+  // Check if user was force logged out (direct table query, no RPC)
   const checkForceLogout = useCallback(async (userId: string) => {
     try {
-      const { data, error } = await supabase.rpc('check_force_logout', { 
-        check_user_id: userId 
-      });
+      const { data: roles } = await supabase
+        .from('user_roles')
+        .select('force_logged_out_at')
+        .eq('user_id', userId)
+        .not('force_logged_out_at', 'is', null)
+        .limit(1);
       
-      if (!error && data) {
+      if (roles && roles.length > 0 && roles[0].force_logged_out_at) {
         setWasForceLoggedOut(true);
         await supabase.auth.signOut();
         return true;
