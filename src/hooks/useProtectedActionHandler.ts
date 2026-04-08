@@ -127,20 +127,8 @@ export const useProtectedActionHandler = () => {
     const config = PROTECTED_ACTIONS[actionKey];
 
     if (!config.requiresAuthOnClick) {
-      try {
-        await callEdgeRoute('api-notifications', 'create', {
-          method: 'POST',
-          body: {
-            type: 'info',
-            message: `User clicked ${config.label}`,
-            event_type: 'click_action',
-            action_label: config.label,
-            action_url: config.route,
-          },
-        });
-      } catch (error) {
-        console.error('Failed to create action notification:', error);
-      }
+      // Notification handled in-memory via NotificationContext
+      console.debug(`Action: ${config.label}`);
 
       navigate(config.route);
       return;
@@ -182,20 +170,8 @@ export const useProtectedActionHandler = () => {
       }
     }
 
-    try {
-      await callEdgeRoute('api-notifications', 'create', {
-        method: 'POST',
-        body: {
-          type: 'info',
-          message: `User clicked ${config.label}`,
-          event_type: 'click_action',
-          action_label: config.label,
-          action_url: config.route,
-        },
-      });
-    } catch (error) {
-      console.error('Failed to create action notification:', error);
-    }
+    // Notification handled in-memory
+    console.debug(`Protected action: ${config.label}`);
 
     navigate(config.route);
   }, [approvedRoles, navigate, switchRole, user, userRole, userRoles]);

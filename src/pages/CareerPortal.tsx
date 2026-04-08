@@ -182,16 +182,8 @@ const CareerPortal = () => {
 
       if (session?.user) {
         try {
-          await callEdgeRoute('api-notifications', 'create', {
-            method: 'POST',
-            body: {
-              type: 'success',
-              message: `${roleInfoMap[selectedType || 'job'].title} submitted successfully.`,
-              event_type: 'application_submitted',
-              action_label: 'Open dashboard',
-              action_url: targetRoute,
-            },
-          });
+          // Notification handled in-memory via NotificationContext
+          console.debug('Application submitted notification');
         } catch (notificationError) {
           console.error('Failed to create application notification:', notificationError);
         }

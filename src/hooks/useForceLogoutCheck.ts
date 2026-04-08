@@ -3,33 +3,43 @@ import { supabase } from '@/integrations/supabase/client';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';
 
+/**
+ * Force logout check using user_roles.force_logged_out_at column
+ * No RPC needed - direct table query
+ */
 export function useForceLogoutCheck() {
   const navigate = useNavigate();
 
   const checkForceLogout = useCallback(async () => {
     try {
       const { data: { user } } = await supabase.auth.getUser();
-      if (!user) return;
+      if (!user) return false;
 
-      const { data: logoutTime } = await supabase.rpc('check_force_logout', {
-        check_user_id: user.id
-      });
+      // Check force_logged_out_at directly from user_roles table
+      const { data: roles } = await supabase
+        .from('user_roles')
+        .select('force_logged_out_at')
+        .eq('user_id', user.id)
+        .not('force_logged_out_at', 'is', null)
+        .limit(1);
 
-      if (logoutTime) {
-        const logoutDate = new Date(logoutTime);
-        const sessionStart = sessionStorage.getItem('session_start');
-        
-        if (sessionStart && logoutDate > new Date(sessionStart)) {
-          // Clear session and force logout
-          await supabase.auth.signOut();
-          sessionStorage.clear();
+      if (roles && roles.length > 0) {
+        const logoutTime = roles[0].force_logged_out_at;
+        if (logoutTime) {
+          const logoutDate = new Date(logoutTime);
+          const sessionStart = sessionStorage.getItem('session_start');
           
-          toast.error('Your session has been terminated by an administrator', {
-            duration: 5000
-          });
-          
-          navigate('/auth');
-          return true;
+          if (sessionStart && logoutDate > new Date(sessionStart)) {
+            await supabase.auth.signOut();
+            sessionStorage.clear();
+            
+            toast.error('Your session has been terminated by an administrator', {
+              duration: 5000
+            });
+            
+            navigate('/auth');
+            return true;
+          }
         }
       }
       
@@ -40,19 +50,13 @@ export function useForceLogoutCheck() {
     }
   }, [navigate]);
 
-  // Check on mount and periodically
   useEffect(() => {
-    // Set session start time if not set
     if (!sessionStorage.getItem('session_start')) {
       sessionStorage.setItem('session_start', new Date().toISOString());
     }
 
-    // Initial check
     checkForceLogout();
-
-    // Check every 30 seconds
     const interval = setInterval(checkForceLogout, 30000);
-
     return () => clearInterval(interval);
   }, [checkForceLogout]);
 

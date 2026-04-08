@@ -5,96 +5,178 @@ import { Navigate, useParams } from "react-router-dom";
  * MODULE SLUG → ROLE SWITCH MAPPING
  * Maps /control-panel/:module to /super-admin-system/role-switch?role=<activeRole>
  * 
- * This is the SINGLE canonical routing layer for all 42 modules.
- * No duplicate routes. No new UI. Just clean mapping.
+ * ALL 42 MODULES — connected to existing March 9-14 dashboards.
+ * No new UI. Only routing.
  */
 const MODULE_TO_ROLE: Record<string, string> = {
-  // Priority 1: Boss Panel
+  // 1. Boss Panel (Control Panel)
   'boss-panel': 'boss_owner',
   'boss': 'boss_owner',
+  'control-panel': 'boss_owner',
   
-  // Priority 2: CEO
+  // 2. CEO Dashboard
   'ceo': 'ceo',
   'ceo-dashboard': 'ceo',
   
-  // Priority 3: Core Management
+  // 3. Vala AI
   'vala-ai': 'vala_ai_management',
+  'vala': 'vala_ai_management',
+  
+  // 4. Server Manager
   'server-manager': 'server_manager',
+  'server': 'server_manager',
+  
+  // 5. AI API Manager
   'ai-api-manager': 'api_ai_manager',
   'api-manager': 'api_ai_manager',
   
-  // Development
+  // 6. Development Manager
   'development-manager': 'developer_management',
   'dev-manager': 'developer_management',
+  
+  // 7. Developer Dashboard
   'developer-dashboard': 'developer_dashboard',
   'developer': 'developer_dashboard',
   
-  // Product & Demo
+  // 8. Product Manager
   'product-manager': 'product_manager',
+  
+  // 9. Demo Manager
   'demo-manager': 'demo_manager',
   
-  // Task & Promise
+  // 10. Demo System Manager (same as demo-manager)
+  'demo-system': 'demo_manager',
+  
+  // 11. Task Manager
   'task-manager': 'task_management',
+  'tasks': 'task_management',
+  
+  // 12. Promise Tracker
   'promise-tracker': 'promise_tracker_manager',
+  
+  // 13. Assist Manager
   'assist-manager': 'assist_manager',
   
-  // Marketing & SEO
-  'seo-manager': 'seo_manager',
+  // 14. Asset Manager (mapped to Pro Manager which handles assets)
+  'asset-manager': 'pro_manager',
+  
+  // 15. Marketing Manager
   'marketing-manager': 'marketing_management',
   'marketing': 'marketing_management',
   
-  // Lead & Sales
+  // 16. SEO Manager
+  'seo-manager': 'seo_manager',
+  'seo': 'seo_manager',
+  
+  // 17. Lead Manager
   'lead-manager': 'lead_manager',
   'leads': 'lead_manager',
   
-  // Franchise & Reseller & Influencer
-  'franchise': 'franchise_manager',
+  // 18. Sales Manager (Sales Support)
+  'sales-manager': 'sales_support_manager',
+  'sales-support': 'sales_support_manager',
+  
+  // 19. Customer Support
+  'customer-support': 'customer_support_management',
+  'support': 'customer_support_management',
+  
+  // 20. Franchise Manager
   'franchise-manager': 'franchise_manager',
-  'reseller': 'reseller_manager',
+  
+  // 21. Franchise Dashboard
+  'franchise': 'franchise_manager',
+  'franchise-dashboard': 'franchise_manager',
+  
+  // 22. Reseller Manager
   'reseller-manager': 'reseller_manager',
-  'influencer': 'influencer_manager',
+  
+  // 23. Reseller Dashboard
+  'reseller': 'reseller_manager',
+  'reseller-dashboard': 'reseller_manager',
+  
+  // 24. Influencer Manager
   'influencer-manager': 'influencer_manager',
   
-  // Support & Finance & Legal
-  'support': 'customer_support_management',
-  'customer-support': 'customer_support_management',
+  // 25. Influencer Dashboard
+  'influencer': 'influencer_dashboard',
+  'influencer-dashboard': 'influencer_dashboard',
+  
+  // 26. Continent Admin
+  'continent': 'continent_super_admin',
+  'continent-admin': 'continent_super_admin',
+  
+  // 27. Country Admin
+  'country-head': 'country_head',
+  'country-admin': 'country_head',
+  
+  // 28. Finance Manager
   'finance': 'finance_manager',
   'finance-manager': 'finance_manager',
+  
+  // 29. Legal Manager
   'legal': 'legal_manager',
   'legal-manager': 'legal_manager',
   
-  // User & Security & Settings
-  'user': 'basic_user_dashboard',
-  'user-dashboard': 'basic_user_dashboard',
+  // 30. Security Manager
   'security': 'security',
   'security-manager': 'security',
+  
+  // 31. System Settings
   'settings': 'settings',
-  'home': 'home',
+  'system-settings': 'settings',
   
-  // Role Manager & HR
-  'role-manager': 'role_manager',
-  'hr-manager': 'hr_manager',
-  'hr': 'hr_manager',
-  
-  // Pro Manager
-  'pro-manager': 'pro_manager',
-  
-  // Marketplace Manager
+  // 32. Marketplace Manager
   'marketplace': 'marketplace_manager',
   'marketplace-manager': 'marketplace_manager',
   
-  // Continent & Country
-  'continent': 'continent_super_admin',
-  'country-head': 'country_head',
+  // 33. License Manager (under Legal)
+  'license-manager': 'legal_manager',
+  'licenses': 'legal_manager',
   
-  // Internal Chatbot
+  // 34. Deployment Manager (under Server Manager)
+  'deployment-manager': 'server_manager',
+  'deployment': 'server_manager',
+  
+  // 35. Analytics Manager (Performance)
+  'analytics': 'boss_owner',
+  'analytics-manager': 'boss_owner',
+  
+  // 36. Notification Manager (under Settings)
+  'notification-manager': 'settings',
+  'notifications': 'settings',
+  
+  // 37. Integration Manager (API/AI Manager)
+  'integration-manager': 'api_ai_manager',
+  'integrations': 'api_ai_manager',
+  
+  // 38. Audit Logs Manager (under Boss)
+  'audit-logs': 'boss_owner',
+  'audit': 'boss_owner',
+  
+  // 39. User Dashboard
+  'user': 'basic_user_dashboard',
+  'user-dashboard': 'basic_user_dashboard',
+  
+  // 40. Pro Manager
+  'pro-manager': 'pro_manager',
+  'pro': 'pro_manager',
+  
+  // 41. Wallet / Ledger System (Finance Manager handles wallet)
+  'wallet': 'finance_manager',
+  'ledger': 'finance_manager',
+  
+  // 42. Order / Payment System (under Boss Panel)
+  'orders': 'boss_owner',
+  'payments': 'boss_owner',
+  'order-system': 'boss_owner',
+  
+  // Extra: Home, Role Manager, HR, Internal Chatbot
+  'home': 'home',
+  'role-manager': 'role_manager',
+  'hr': 'hr_manager',
+  'hr-manager': 'hr_manager',
   'internal-chatbot': 'internal_chatbot',
   'chatbot': 'internal_chatbot',
-  
-  // Influencer Dashboard (user-facing)
-  'influencer-dashboard': 'influencer_dashboard',
-  
-  // Pro User Dashboard
   'pro-user': 'pro_user_dashboard',
 };
 

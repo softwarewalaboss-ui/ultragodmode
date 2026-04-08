@@ -67,35 +67,18 @@ async function getDeviceId() {
   return deviceId;
 }
 
-async function logSystemEvent(payload: Record<string, unknown>) {
+// Log to audit_logs (the only log table that exists)
+async function logToAudit(action: string, meta: Record<string, unknown>) {
   try {
-    await (supabase as any).from('system_logs').insert(payload);
-  } catch {
-    // Logging failures must not break the request path.
-  }
-}
-
-async function logErrorEvent(payload: Record<string, unknown>) {
-  try {
-    await (supabase as any).from('error_logs').insert(payload);
-  } catch {
-    // Logging failures must not break the request path.
-  }
-}
-
-async function triggerAutoHeal(module: string, reason: string) {
-  try {
-    await supabase.functions.invoke('ai-auto-heal', {
-      body: {
-        action: 'restart_module',
-        data: {
-          module,
-          reason,
-        },
-      },
+    const { data: { session } } = await supabase.auth.getSession();
+    await supabase.from('audit_logs').insert({
+      action,
+      module: (meta.module as string) || 'platform',
+      user_id: session?.user?.id || null,
+      meta_json: meta,
     });
   } catch {
-    // Auto-heal is best effort.
+    // Logging failures must not break the request path.
   }
 }
 
@@ -131,7 +114,6 @@ export async function callEdgeRoute<T>(
   options: EdgeRouteOptions = {},
 ): Promise<EdgeRouteResponse<T>> {
   const method = options.method || 'GET';
-  const moduleName = options.module || inferModule(functionName);
   const cacheKey = `${functionName}:${path}:${JSON.stringify(options.query || {})}`;
 
   if (method === 'GET') {
@@ -191,22 +173,6 @@ export async function callEdgeRoute<T>(
           });
         }
 
-        void logSystemEvent({
-          module: moduleName,
-          action: `${method} ${functionName}/${path || ''}`.trim(),
-          status: 'success',
-          request_id: requestId,
-          user_id: session?.user?.id || null,
-          duration_ms: Math.round(performance.now() - requestStartedAt),
-          metadata: {
-            function_name: functionName,
-            path,
-            attempts: attempt + 1,
-            failover_used: baseIndex > 0,
-            response_status: response.status,
-          },
-        });
-
         return result;
       } catch (error) {
         const message = error instanceof Error ? error.message : 'Unknown edge transport failure';
@@ -221,40 +187,12 @@ export async function callEdgeRoute<T>(
 
   const finalMessage = failures[failures.length - 1] || 'Unknown edge route failure';
 
-  void logErrorEvent({
-    module: moduleName,
-    endpoint: `${functionName}/${path || ''}`.replace(/\/$/, ''),
-    error: finalMessage,
-    error_code: 'EDGE_ROUTE_FAILED',
-    fix_status: 'queued',
-    severity: 'high',
+  // Log failure to audit_logs (silent, won't 404)
+  void logToAudit(`edge_route_failed:${functionName}/${path}`, {
+    module: inferModule(functionName),
+    failures,
     request_id: requestId,
-    user_id: session?.user?.id || null,
-    metadata: {
-      function_name: functionName,
-      path,
-      method,
-      failures,
-      fallback_attempted: baseUrls.length > 1,
-    },
   });
-
-  void logSystemEvent({
-    module: moduleName,
-    action: `${method} ${functionName}/${path || ''}`.trim(),
-    status: 'failed',
-    request_id: requestId,
-    user_id: session?.user?.id || null,
-    duration_ms: Math.round(performance.now() - requestStartedAt),
-    metadata: {
-      function_name: functionName,
-      path,
-      failures,
-    },
-  });
-
-  void triggerAutoHeal(moduleName, finalMessage);
-  window.dispatchEvent(new CustomEvent('sv:api-failure', { detail: { module: moduleName, error: finalMessage, requestId } }));
 
   throw new Error(finalMessage);
 }

@@ -71,18 +71,10 @@ export function useAutoHeal(autoStart = false) {
   // API CALLS
   // =========================================================================
 
-  const callAutoHeal = useCallback(async (action: string, data?: any) => {
-    try {
-      const { data: result, error } = await supabase.functions.invoke('ai-auto-heal', {
-        body: { action, data },
-      });
-
-      if (error) throw error;
-      return result;
-    } catch (error) {
-      console.error(`Auto-heal ${action} failed:`, error);
-      return null;
-    }
+  const callAutoHeal = useCallback(async (action: string, _data?: any) => {
+    // Auto-heal edge function not deployed yet - return null gracefully
+    console.debug(`[AutoHeal] ${action} - edge function not available`);
+    return null;
   }, []);
 
   // =========================================================================
