@@ -464,63 +464,50 @@ const App = () => (
               
               {/* Public demo route for Influencer Command Center */}
               <Route path="/demo/influencer-command-center" element={<InfluencerCommandCenter />} />
-              {/* Prime User Routes */}
-              <Route path="/prime" element={<RequireRole allowed={["prime", "super_admin"]}><PrimeUserDashboard /></RequireRole>} />
-              <Route path="/prime/dashboard" element={<RequireRole allowed={["prime", "super_admin"]}><PrimeUserDashboard /></RequireRole>} />
-              <Route path="/prime-user" element={<RequireRole allowed={["prime", "super_admin"]}><PrimeUserDashboard /></RequireRole>} />
+              {/* Prime User → redirect */}
+              <Route path="/prime" element={<Navigate to="/control-panel/pro-manager" replace />} />
+              <Route path="/prime/dashboard" element={<Navigate to="/control-panel/pro-manager" replace />} />
+              <Route path="/prime-user" element={<Navigate to="/control-panel/pro-manager" replace />} />
 
-              {/* Manager Routes - PROTECTED BY ROLE */}
-              {/* @ts-ignore */}
-              <Route path="/lead-manager" element={<RequireRole allowed={["lead_manager", "super_admin", "boss_owner", "master", "ceo"]}><LeadManager /></RequireRole>} />
-              {/* @ts-ignore */}
-              <Route path="/leads/*" element={<RequireRole allowed={["lead_manager", "super_admin", "boss_owner", "master", "ceo"]}><LeadManager /></RequireRole>} />
-              {/* @ts-ignore */}
-              <Route path="/task-manager" element={<RequireRole allowed={["task_manager", "super_admin"]}><TaskManager /></RequireRole>} />
-              {/* @ts-ignore */}
-              <Route path="/tasks/*" element={<RequireRole allowed={["task_manager", "super_admin"]}><TaskManager /></RequireRole>} />
-              <Route path="/demo-manager" element={<RequireRole allowed={["demo_manager", "super_admin", "master"]}><DemoManagerDashboard /></RequireRole>} />
-              <Route path="/demo-manager/*" element={<RequireRole allowed={["demo_manager", "super_admin", "master"]}><DemoManagerDashboard /></RequireRole>} />
-              <Route path="/demo" element={<RequireRole allowed={["demo_manager", "franchise", "reseller", "super_admin"]}><ProductDemoManager /></RequireRole>} />
-              <Route path="/demos/*" element={<RequireRole allowed={["demo_manager", "franchise", "reseller", "super_admin"]}><ProductDemoManager /></RequireRole>} />
-              <Route path="/finance" element={<RequireRole allowed={["finance_manager", "super_admin"]}><FinanceManager /></RequireRole>} />
-              <Route path="/finance/*" element={<RequireRole allowed={["finance_manager", "super_admin"]}><FinanceManager /></RequireRole>} />
-              <Route path="/legal" element={<RequireRole allowed={["legal_compliance", "super_admin"]}><LegalComplianceManager /></RequireRole>} />
-              <Route path="/marketing" element={<RequireRole allowed={["marketing_manager", "super_admin"]}><MarketingManager /></RequireRole>} />
-              <Route path="/marketing/*" element={<RequireRole allowed={["marketing_manager", "super_admin"]}><MarketingManager /></RequireRole>} />
-              <Route path="/enterprise/marketing" element={<RequireRole allowed={["marketing_manager", "super_admin"]}><MarketingManager /></RequireRole>} />
-              <Route path="/enterprise/marketing/*" element={<RequireRole allowed={["marketing_manager", "super_admin"]}><MarketingManager /></RequireRole>} />
-              <Route path="/performance" element={<RequireRole allowed={["performance_manager", "super_admin"]}><PerformanceManager /></RequireRole>} />
-              <Route path="/performance/*" element={<RequireRole allowed={["performance_manager", "super_admin"]}><PerformanceManager /></RequireRole>} />
-              <Route path="/rnd-dashboard" element={<RequireRole allowed={["rnd_manager", "super_admin"]}><RnDDashboard /></RequireRole>} />
-              <Route path="/rnd/*" element={<RequireRole allowed={["rnd_manager", "super_admin"]}><RnDDashboard /></RequireRole>} />
-              <Route path="/hr" element={<RequireRole allowed={["hr_manager", "super_admin"]}><HRDashboard /></RequireRole>} />
-              <Route path="/hr/*" element={<RequireRole allowed={["hr_manager", "super_admin"]}><HRDashboard /></RequireRole>} />
-              
-              {/* Secure Task Manager Dashboard */}
-              <Route path="/task-manager-secure" element={<RequireRole allowed={["task_manager", "super_admin"]}><SecureTaskManagerDashboard /></RequireRole>} />
-              
-              {/* Secure Legal Manager Dashboard */}
-              <Route path="/legal-manager-secure" element={<RequireRole allowed={["legal_compliance", "super_admin"]}><SecureLegalManagerDashboard /></RequireRole>} />
-              <Route path="/seo" element={<RequireRole allowed={["seo_manager", "super_admin"]}><SEODashboard /></RequireRole>} />
-              <Route path="/seo/*" element={<RequireRole allowed={["seo_manager", "super_admin"]}><SEODashboard /></RequireRole>} />
-              <Route path="/seo-dashboard" element={<RequireRole allowed={["seo_manager", "super_admin"]}><SEODashboard /></RequireRole>} />
-              <Route path="/seo-manager" element={<RequireRole allowed={["seo_manager", "super_admin"]}><SEODashboard /></RequireRole>} />
-              <Route path="/support" element={<RequireRole allowed={["support", "client_success", "super_admin"]}><SupportDashboard /></RequireRole>} />
-              <Route path="/support/*" element={<RequireRole allowed={["support", "client_success", "super_admin"]}><SupportDashboard /></RequireRole>} />
-              <Route path="/support-dashboard" element={<RequireRole allowed={["support", "client_success", "super_admin"]}><SupportDashboard /></RequireRole>} />
-              {/* @ts-ignore */}
-              <Route path="/sales-support" element={<RequireRole allowed={["support", "super_admin"]}><SalesSupportDashboard /></RequireRole>} />
-              {/* @ts-ignore */}
-              <Route path="/sales" element={<RequireRole allowed={["support", "super_admin"]}><SalesSupportDashboard /></RequireRole>} />
-              {/* @ts-ignore */}
-              <Route path="/sales/*" element={<RequireRole allowed={["support", "super_admin"]}><SalesSupportDashboard /></RequireRole>} />
-              <Route path="/client-success" element={<RequireRole allowed={["client_success", "super_admin"]}><ClientSuccessDashboard /></RequireRole>} />
-              <Route path="/clients/*" element={<RequireRole allowed={["client_success", "super_admin"]}><ClientSuccessDashboard /></RequireRole>} />
-              {/* Incident / crisis routes (no dedicated enum; restrict to super_admin + boss_owner) */}
-              <Route path="/incident-crisis" element={<RequireRole allowed={["boss_owner", "super_admin"]}><IncidentCrisisDashboard /></RequireRole>} />
-              <Route path="/crisis/*" element={<RequireRole allowed={["boss_owner", "super_admin"]}><IncidentCrisisDashboard /></RequireRole>} />
-              <Route path="/hr-dashboard" element={<RequireRole allowed={["hr_manager", "super_admin"]}><HRDashboard /></RequireRole>} />
-              <Route path="/ai/*" element={<RequireRole allowed={["ai_manager", "super_admin"]}><AIOptimizationConsole /></RequireRole>} />
+              {/* All manager routes → redirect to /control-panel */}
+              <Route path="/lead-manager" element={<Navigate to="/control-panel/lead-manager" replace />} />
+              <Route path="/leads/*" element={<Navigate to="/control-panel/lead-manager" replace />} />
+              <Route path="/task-manager" element={<Navigate to="/control-panel/task-manager" replace />} />
+              <Route path="/tasks/*" element={<Navigate to="/control-panel/task-manager" replace />} />
+              <Route path="/task-manager-secure" element={<Navigate to="/control-panel/task-manager" replace />} />
+              <Route path="/demo-manager" element={<Navigate to="/control-panel/demo-manager" replace />} />
+              <Route path="/demo-manager/*" element={<Navigate to="/control-panel/demo-manager" replace />} />
+              <Route path="/demo" element={<Navigate to="/control-panel/demo-manager" replace />} />
+              <Route path="/finance" element={<Navigate to="/control-panel/finance" replace />} />
+              <Route path="/finance/*" element={<Navigate to="/control-panel/finance" replace />} />
+              <Route path="/legal" element={<Navigate to="/control-panel/legal" replace />} />
+              <Route path="/legal-manager-secure" element={<Navigate to="/control-panel/legal" replace />} />
+              <Route path="/marketing" element={<Navigate to="/control-panel/marketing-manager" replace />} />
+              <Route path="/marketing/*" element={<Navigate to="/control-panel/marketing-manager" replace />} />
+              <Route path="/enterprise/marketing" element={<Navigate to="/control-panel/marketing-manager" replace />} />
+              <Route path="/enterprise/marketing/*" element={<Navigate to="/control-panel/marketing-manager" replace />} />
+              <Route path="/performance" element={<Navigate to="/control-panel/boss-panel" replace />} />
+              <Route path="/performance/*" element={<Navigate to="/control-panel/boss-panel" replace />} />
+              <Route path="/rnd-dashboard" element={<Navigate to="/control-panel/boss-panel" replace />} />
+              <Route path="/rnd/*" element={<Navigate to="/control-panel/boss-panel" replace />} />
+              <Route path="/hr" element={<Navigate to="/control-panel/hr" replace />} />
+              <Route path="/hr/*" element={<Navigate to="/control-panel/hr" replace />} />
+              <Route path="/hr-dashboard" element={<Navigate to="/control-panel/hr" replace />} />
+              <Route path="/seo" element={<Navigate to="/control-panel/seo-manager" replace />} />
+              <Route path="/seo/*" element={<Navigate to="/control-panel/seo-manager" replace />} />
+              <Route path="/seo-dashboard" element={<Navigate to="/control-panel/seo-manager" replace />} />
+              <Route path="/seo-manager" element={<Navigate to="/control-panel/seo-manager" replace />} />
+              <Route path="/support" element={<Navigate to="/control-panel/customer-support" replace />} />
+              <Route path="/support/*" element={<Navigate to="/control-panel/customer-support" replace />} />
+              <Route path="/support-dashboard" element={<Navigate to="/control-panel/customer-support" replace />} />
+              <Route path="/sales-support" element={<Navigate to="/control-panel/sales-manager" replace />} />
+              <Route path="/sales" element={<Navigate to="/control-panel/sales-manager" replace />} />
+              <Route path="/sales/*" element={<Navigate to="/control-panel/sales-manager" replace />} />
+              <Route path="/client-success" element={<Navigate to="/control-panel/customer-support" replace />} />
+              <Route path="/clients/*" element={<Navigate to="/control-panel/customer-support" replace />} />
+              <Route path="/incident-crisis" element={<Navigate to="/control-panel/security" replace />} />
+              <Route path="/crisis/*" element={<Navigate to="/control-panel/security" replace />} />
+              <Route path="/ai/*" element={<Navigate to="/control-panel/ai-api-manager" replace />} />
 
               {/* NEW ROLES (25-28) Routes */}
               <Route path="/safe-assist" element={<RequireRole allowed={["safe_assist", "super_admin", "master"]}><SafeAssistDashboard /></RequireRole>} />
