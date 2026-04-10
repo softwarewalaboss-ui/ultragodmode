@@ -406,30 +406,28 @@ const App = () => (
               {/* @ts-ignore */}
               <Route path="/continent-super-admin/*" element={<RequireRole allowed={["boss_owner"]}><ContinentSuperAdminDashboard /></RequireRole>} />
 
-              {/* Super Admin Routes - Redirect to unified RoleSwitchDashboard to prevent duplicate layouts */}
-              <Route path="/admin" element={<Navigate to="/super-admin-system/role-switch?role=boss_owner" replace />} />
-              <Route path="/super-admin" element={<Navigate to="/super-admin-system/role-switch?role=boss_owner" replace />} />
-              <Route path="/super-admin/dashboard" element={<Navigate to="/super-admin-system/role-switch?role=boss_owner" replace />} />
-              <Route path="/super-admin/command-center" element={<Navigate to="/super-admin-system/role-switch?role=boss_owner" replace />} />
-              <Route path="/super-admin/live-tracking" element={<RequireRole allowed={["boss_owner", "master", "ceo"]}><LiveTracking /></RequireRole>} />
-              <Route path="/super-admin/role-manager" element={<RequireRole allowed={["boss_owner", "master", "ceo"]}><RoleManager /></RequireRole>} />
-              <Route path="/super-admin/user-manager" element={<RequireRole allowed={["boss_owner", "master", "ceo"]}><UserManager /></RequireRole>} />
-              <Route path="/super-admin/permission-matrix" element={<RequireRole allowed={["boss_owner", "master", "ceo"]}><PermissionMatrix /></RequireRole>} />
-              <Route path="/super-admin/security-center" element={<RequireRole allowed={["boss_owner", "master", "ceo"]}><SecurityCenter /></RequireRole>} />
-              <Route path="/super-admin/demo-manager" element={<RequireRole allowed={["boss_owner", "master", "ceo"]}><ProductDemoManager /></RequireRole>} />
-              <Route path="/super-admin/product-manager" element={<RequireRole allowed={["boss_owner", "master", "ceo"]}><ProductManagerPage /></RequireRole>} />
-              <Route path="/super-admin/system-settings" element={<RequireRole allowed={["boss_owner", "master", "ceo"]}><SystemSettings /></RequireRole>} />
-              {/* @ts-ignore */}
-              <Route path="/super-admin/system-audit" element={<RequireRole allowed={["boss_owner"]}><SystemAudit /></RequireRole>} />
-              <Route path="/super-admin/prime-manager" element={<RequireRole allowed={["boss_owner"]}><PrimeManager /></RequireRole>} />
-              {/* @ts-ignore */}
-              <Route path="/super-admin/influencer-manager" element={<RequireRole allowed={["boss_owner"]}><InfluencerManager /></RequireRole>} />
-              <Route path="/super-admin/finance-center" element={<RequireRole allowed={["boss_owner"]}><FinanceManager /></RequireRole>} />
-              <Route path="/super-admin/support-center" element={<RequireRole allowed={["boss_owner"]}><SupportDashboard /></RequireRole>} />
-              <Route path="/super-admin/ai-billing" element={<RequireRole allowed={["boss_owner"]}><AIBillingDashboard /></RequireRole>} />
-              <Route path="/super-admin/franchise-manager" element={<RequireRole allowed={["boss_owner"]}><FranchiseManagement /></RequireRole>} />
-              <Route path="/super-admin/compliance-center" element={<RequireRole allowed={["boss_owner"]}><ComplianceCenter /></RequireRole>} />
-              <Route path="/super-admin/performance" element={<RequireRole allowed={["boss_owner"]}><PerformanceManager /></RequireRole>} />
+              {/* Super Admin Routes → redirect to control panel */}
+              <Route path="/admin" element={<Navigate to="/control-panel/boss-panel" replace />} />
+              <Route path="/super-admin" element={<Navigate to="/control-panel/boss-panel" replace />} />
+              <Route path="/super-admin/dashboard" element={<Navigate to="/control-panel/boss-panel" replace />} />
+              <Route path="/super-admin/command-center" element={<Navigate to="/control-panel/boss-panel" replace />} />
+              <Route path="/super-admin/live-tracking" element={<Navigate to="/control-panel/boss-panel" replace />} />
+              <Route path="/super-admin/role-manager" element={<Navigate to="/control-panel/boss-panel" replace />} />
+              <Route path="/super-admin/user-manager" element={<Navigate to="/control-panel/boss-panel" replace />} />
+              <Route path="/super-admin/permission-matrix" element={<Navigate to="/control-panel/boss-panel" replace />} />
+              <Route path="/super-admin/security-center" element={<Navigate to="/control-panel/boss-panel" replace />} />
+              <Route path="/super-admin/demo-manager" element={<Navigate to="/control-panel/demo-manager" replace />} />
+              <Route path="/super-admin/product-manager" element={<Navigate to="/control-panel/product-manager" replace />} />
+              <Route path="/super-admin/system-settings" element={<Navigate to="/control-panel/settings" replace />} />
+              <Route path="/super-admin/system-audit" element={<Navigate to="/control-panel/audit" replace />} />
+              <Route path="/super-admin/prime-manager" element={<Navigate to="/control-panel/pro-manager" replace />} />
+              <Route path="/super-admin/influencer-manager" element={<Navigate to="/control-panel/influencer-manager" replace />} />
+              <Route path="/super-admin/finance-center" element={<Navigate to="/control-panel/finance" replace />} />
+              <Route path="/super-admin/support-center" element={<Navigate to="/control-panel/customer-support" replace />} />
+              <Route path="/super-admin/ai-billing" element={<Navigate to="/control-panel/boss-panel" replace />} />
+              <Route path="/super-admin/franchise-manager" element={<Navigate to="/control-panel/franchise-manager" replace />} />
+              <Route path="/super-admin/compliance-center" element={<Navigate to="/control-panel/legal" replace />} />
+              <Route path="/super-admin/performance" element={<Navigate to="/control-panel/boss-panel" replace />} />
 
               {/* Franchise Routes */}
               <Route path="/franchise" element={<RequireRole allowed={["franchise", "super_admin"]}><FranchiseLayout><FranchiseDashboardPage /></FranchiseLayout></RequireRole>} />
