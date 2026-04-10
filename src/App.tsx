@@ -509,48 +509,36 @@ const App = () => (
               <Route path="/crisis/*" element={<Navigate to="/control-panel/security" replace />} />
               <Route path="/ai/*" element={<Navigate to="/control-panel/ai-api-manager" replace />} />
 
-              {/* NEW ROLES (25-28) Routes */}
-              <Route path="/safe-assist" element={<RequireRole allowed={["safe_assist", "super_admin", "master"]}><SafeAssistDashboard /></RequireRole>} />
-              <Route path="/safe-assist/*" element={<RequireRole allowed={["safe_assist", "super_admin", "master"]}><SafeAssistDashboard /></RequireRole>} />
-              <Route path="/assist-manager" element={<RequireRole allowed={["assist_manager", "super_admin", "master"]}><AssistManagerDashboard /></RequireRole>} />
-              <Route path="/assist-manager/*" element={<RequireRole allowed={["assist_manager", "super_admin", "master"]}><AssistManagerDashboard /></RequireRole>} />
-              <Route path="/promise-tracker" element={<RequireRole allowed={["promise_tracker", "super_admin", "master"]}><PromiseTrackerDashboard /></RequireRole>} />
-              <Route path="/promise-tracker/*" element={<RequireRole allowed={["promise_tracker", "super_admin", "master"]}><PromiseTrackerDashboard /></RequireRole>} />
-              <Route path="/promise-management" element={<RequireRole allowed={["promise_management", "super_admin", "master"]}><PromiseManagementDashboard /></RequireRole>} />
-              <Route path="/promise-management/*" element={<RequireRole allowed={["promise_management", "super_admin", "master"]}><PromiseManagementDashboard /></RequireRole>} />
+              {/* Roles 25-28 → redirect */}
+              <Route path="/safe-assist" element={<Navigate to="/control-panel/assist-manager" replace />} />
+              <Route path="/safe-assist/*" element={<Navigate to="/control-panel/assist-manager" replace />} />
+              <Route path="/assist-manager" element={<Navigate to="/control-panel/assist-manager" replace />} />
+              <Route path="/assist-manager/*" element={<Navigate to="/control-panel/assist-manager" replace />} />
+              <Route path="/promise-tracker" element={<Navigate to="/control-panel/promise-tracker" replace />} />
+              <Route path="/promise-tracker/*" element={<Navigate to="/control-panel/promise-tracker" replace />} />
+              <Route path="/promise-management" element={<Navigate to="/control-panel/promise-tracker" replace />} />
+              <Route path="/promise-management/*" element={<Navigate to="/control-panel/promise-tracker" replace />} />
 
-              {/* System Routes - SUPER ADMIN ONLY */}
-              <Route path="/system-settings" element={<RequireRole allowed={["super_admin"]}><SystemSettings /></RequireRole>} />
-              <Route path="/buzzer-console" element={<RequireRole allowed={["super_admin"]}><NotificationBuzzerConsole /></RequireRole>} />
-              <Route path="/api-integrations" element={<RequireRole allowed={["super_admin"]}><APIIntegrationDashboard /></RequireRole>} />
+              {/* System Routes → redirect */}
+              <Route path="/system-settings" element={<Navigate to="/control-panel/settings" replace />} />
+              <Route path="/buzzer-console" element={<Navigate to="/control-panel/boss-panel" replace />} />
+              <Route path="/api-integrations" element={<Navigate to="/control-panel/ai-api-manager" replace />} />
               <Route path="/internal-chat" element={<RequireAuth><InternalChat /></RequireAuth>} />
               <Route path="/personal-chat" element={<RequireAuth><PersonalChat /></RequireAuth>} />
-              <Route path="/ai-console" element={<RequireRole allowed={["ai_manager", "super_admin"]}><AIOptimizationConsole /></RequireRole>} />
-              <Route path="/demo-credentials" element={<RequireRole allowed={["super_admin"]}><DemoCredentials /></RequireRole>} />
-              <Route path="/demo-order-system" element={<RequireRole allowed={["master", "super_admin", "demo_manager"]}><DemoOrderSystem /></RequireRole>} />
+              <Route path="/ai-console" element={<Navigate to="/control-panel/ai-api-manager" replace />} />
+              <Route path="/demo-credentials" element={<Navigate to="/control-panel/demo-manager" replace />} />
+              <Route path="/demo-order-system" element={<Navigate to="/control-panel/demo-manager" replace />} />
 
-              {/* Vala Control Center - Secure Isolated System */}
-              <Route path="/vala-control" element={<RequireAuth><ValaControlCenter roleView="operations" /></RequireAuth>} />
-              <Route path="/vala-control/operations" element={<RequireAuth><ValaControlCenter roleView="operations" /></RequireAuth>} />
-              <Route path="/vala-control/regional" element={<RequireAuth><ValaControlCenter roleView="regional" /></RequireAuth>} />
-              <Route path="/vala-control/ai-head" element={<RequireAuth><ValaControlCenter roleView="ai_head" /></RequireAuth>} />
-              <Route path="/vala-control/master" element={<RequireRole allowed={["master"]} masterOnly><ValaControlCenter roleView="master" /></RequireRole>} />
+              {/* Vala → redirect */}
+              <Route path="/vala-control" element={<Navigate to="/control-panel/vala-ai" replace />} />
+              <Route path="/vala-control/*" element={<Navigate to="/control-panel/vala-ai" replace />} />
+              <Route path="/enterprise-control" element={<Navigate to="/control-panel/boss-panel" replace />} />
+              <Route path="/vala" element={<Navigate to="/control-panel/vala-ai" replace />} />
+              <Route path="/vala/*" element={<Navigate to="/control-panel/vala-ai" replace />} />
 
-              {/* Enterprise Control System - Isolated Workspaces */}
-              <Route path="/enterprise-control" element={<EnterpriseControlHub />} />
-
-              {/* New Vala Control System - Isolated Workspaces */}
-              <Route path="/vala" element={<RequireAuth><ValaControlHub /></RequireAuth>} />
-              <Route path="/vala/operation" element={<RequireAuth><ValaOperationWorkspace /></RequireAuth>} />
-              <Route path="/vala/regional" element={<RequireAuth><ValaRegionalWorkspace /></RequireAuth>} />
-              <Route path="/vala/ai-head" element={<RequireAuth><ValaAIHeadWorkspace /></RequireAuth>} />
-              <Route path="/vala/master" element={<RequireRole allowed={["master"]} masterOnly><ValaMasterWorkspace /></RequireRole>} />
-
-              {/* Dev Manager Dashboard */}
-              <Route path="/dev-manager" element={<RequireAuth><SecureDevManagerDashboard /></RequireAuth>} />
-
-              {/* HR Manager Dashboard */}
-              <Route path="/hr-manager" element={<RequireAuth><SecureHRManagerDashboard /></RequireAuth>} />
+              {/* Dev/HR Manager → redirect */}
+              <Route path="/dev-manager" element={<Navigate to="/control-panel/development-manager" replace />} />
+              <Route path="/hr-manager" element={<Navigate to="/control-panel/hr" replace />} />
 
               {/* Wireframe Routes - Design Sandbox */}
               <Route path="/wireframe/*" element={<WireframeRoutes />} />
