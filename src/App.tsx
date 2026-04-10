@@ -357,54 +357,25 @@ const App = () => (
               <Route path="/admin/role-manager" element={<RequireRole allowed={["boss_owner"]}><RoleManagerPage /></RequireRole>} />
 
 
-              {/* Area Manager now redirects to Country Head - merged roles */}
-              <Route path="/area-manager" element={<Navigate to="/super-admin-system/role-switch?role=country_head" replace />} />
-              <Route path="/area-manager/*" element={<Navigate to="/super-admin-system/role-switch?role=country_head" replace />} />
-
-              {/* Server Manager Routes */}
-              <Route path="/server-manager" element={<RequireRole allowed={["boss_owner", "server_manager"]}><ServerManagerDashboard /></RequireRole>} />
-              <Route path="/server-manager/*" element={<RequireRole allowed={["boss_owner", "server_manager"]}><ServerManagerDashboard /></RequireRole>} />
-
-              {/* Security Command Center Routes */}
-              <Route path="/security-command" element={<RequireRole allowed={["boss_owner"]}><SecurityCommandCenter /></RequireRole>} />
-              <Route path="/security-command/*" element={<RequireRole allowed={["boss_owner"]}><SecurityCommandCenter /></RequireRole>} />
-
-              {/* API / AI Manager Routes */}
-              <Route path="/api-manager" element={<RequireRole allowed={["boss_owner", "ai_manager"]}><APIManagerDashboard /></RequireRole>} />
-              <Route path="/api-manager/*" element={<RequireRole allowed={["boss_owner", "ai_manager"]}><APIManagerDashboard /></RequireRole>} />
-
-              {/* Marketing Manager Routes */}
-              <Route path="/marketing-manager" element={<RequireRole allowed={["boss_owner", "marketing_manager"]}><MarketingManagerDashboard /></RequireRole>} />
-              <Route path="/marketing-manager/*" element={<RequireRole allowed={["boss_owner", "marketing_manager"]}><MarketingManagerDashboard /></RequireRole>} />
-
-
-              {/* SEO Manager Routes */}
-              <Route path="/seo-manager" element={<RequireRole allowed={["boss_owner", "seo_manager"]}><SEOManagerDashboard /></RequireRole>} />
-              <Route path="/seo-manager/*" element={<RequireRole allowed={["boss_owner", "seo_manager"]}><SEOManagerDashboard /></RequireRole>} />
-
-              {/* Legal Manager Routes (enum role: legal_compliance) */}
-              <Route path="/legal-manager" element={<RequireRole allowed={["boss_owner", "legal_compliance"]}><LegalManagerDashboard /></RequireRole>} />
-              <Route path="/legal-manager/*" element={<RequireRole allowed={["boss_owner", "legal_compliance"]}><LegalManagerDashboard /></RequireRole>} />
-
-              {/* AI CEO Routes - Autonomous Intelligence Observer */}
-              <Route path="/ai-ceo" element={<RequireRole allowed={["boss_owner", "ceo"]}><AICEODashboard /></RequireRole>}>
-                <Route index element={<AICEODashboardMain />} />
-                <Route path="live-monitor" element={<AICEOLiveMonitor />} />
-                <Route path="decision-engine" element={<AICEODecisionEngine />} />
-                <Route path="approvals" element={<AICEOApprovals />} />
-                <Route path="risk" element={<AICEORiskCompliance />} />
-                <Route path="performance" element={<AICEOPerformance />} />
-                <Route path="predictions" element={<AICEOPredictions />} />
-                <Route path="reports" element={<AICEOReports />} />
-                <Route path="learning" element={<AICEOLearning />} />
-                <Route path="settings" element={<AICEOSettings />} />
-              </Route>
-
-              {/* Continent Super Admin Routes */}
-              {/* @ts-ignore */}
-              <Route path="/continent-super-admin" element={<RequireRole allowed={["boss_owner"]}><ContinentSuperAdminDashboard /></RequireRole>} />
-              {/* @ts-ignore */}
-              <Route path="/continent-super-admin/*" element={<RequireRole allowed={["boss_owner"]}><ContinentSuperAdminDashboard /></RequireRole>} />
+              {/* All old direct routes → redirect to /control-panel */}
+              <Route path="/area-manager" element={<Navigate to="/control-panel/country-head" replace />} />
+              <Route path="/area-manager/*" element={<Navigate to="/control-panel/country-head" replace />} />
+              <Route path="/server-manager" element={<Navigate to="/control-panel/server-manager" replace />} />
+              <Route path="/server-manager/*" element={<Navigate to="/control-panel/server-manager" replace />} />
+              <Route path="/security-command" element={<Navigate to="/control-panel/security" replace />} />
+              <Route path="/security-command/*" element={<Navigate to="/control-panel/security" replace />} />
+              <Route path="/api-manager" element={<Navigate to="/control-panel/ai-api-manager" replace />} />
+              <Route path="/api-manager/*" element={<Navigate to="/control-panel/ai-api-manager" replace />} />
+              <Route path="/marketing-manager" element={<Navigate to="/control-panel/marketing-manager" replace />} />
+              <Route path="/marketing-manager/*" element={<Navigate to="/control-panel/marketing-manager" replace />} />
+              <Route path="/seo-manager" element={<Navigate to="/control-panel/seo-manager" replace />} />
+              <Route path="/seo-manager/*" element={<Navigate to="/control-panel/seo-manager" replace />} />
+              <Route path="/legal-manager" element={<Navigate to="/control-panel/legal" replace />} />
+              <Route path="/legal-manager/*" element={<Navigate to="/control-panel/legal" replace />} />
+              <Route path="/ai-ceo" element={<Navigate to="/control-panel/ceo" replace />} />
+              <Route path="/ai-ceo/*" element={<Navigate to="/control-panel/ceo" replace />} />
+              <Route path="/continent-super-admin" element={<Navigate to="/control-panel/continent" replace />} />
+              <Route path="/continent-super-admin/*" element={<Navigate to="/control-panel/continent" replace />} />
 
               {/* Super Admin Routes → redirect to control panel */}
               <Route path="/admin" element={<Navigate to="/control-panel/boss-panel" replace />} />
