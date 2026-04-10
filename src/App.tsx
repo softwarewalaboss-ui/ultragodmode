@@ -343,22 +343,16 @@ const App = () => (
               <Route path="/access-denied" element={<AccessDenied />} />
               <Route path="/session-expired" element={<SessionExpiredPage />} />
 
-              {/* Boss Fortress Auth - Ultra Secure */}
-              <Route path="/boss-fortress" element={<BossFortressAuth />} />
-              <Route path="/boss-register" element={<BossRegister />} />
-              <Route path="/boss/login" element={<SuperAdminLogin />} />
-
-              {/* Owner Dashboard - SoftwareWala Business Control */}
-              <Route path="/owner" element={<RequireRole allowed={["boss_owner"]}><SoftwareWalaOwnerDashboard /></RequireRole>} />
-              <Route path="/owner/*" element={<RequireRole allowed={["boss_owner"]}><SoftwareWalaOwnerDashboard /></RequireRole>} />
-              <Route path="/softwarewala" element={<RequireRole allowed={["boss_owner"]}><SoftwareWalaOwnerDashboard /></RequireRole>} />
-
-              {/* Boss Admin Routes - BOSS_OWNER ONLY */}
-              <Route path="/master-admin" element={<RequireRole allowed={["boss_owner"]}><MasterControlCenter /></RequireRole>} />
-              <Route path="/master-admin/*" element={<RequireRole allowed={["boss_owner"]}><MasterControlCenter /></RequireRole>} />
-              <Route path="/master-admin-supreme" element={<RequireRole allowed={["boss_owner"]}><MasterAdminSupreme /></RequireRole>} />
-              
-              {/* Admin Utilities - Boss Owner */}
+              {/* Old boss/admin routes → redirect to unified control panel */}
+              <Route path="/boss-fortress" element={<Navigate to="/login" replace />} />
+              <Route path="/boss-register" element={<Navigate to="/login" replace />} />
+              <Route path="/boss/login" element={<Navigate to="/login" replace />} />
+              <Route path="/owner" element={<Navigate to="/control-panel/boss-panel" replace />} />
+              <Route path="/owner/*" element={<Navigate to="/control-panel/boss-panel" replace />} />
+              <Route path="/softwarewala" element={<Navigate to="/control-panel/boss-panel" replace />} />
+              <Route path="/master-admin" element={<Navigate to="/control-panel/boss-panel" replace />} />
+              <Route path="/master-admin/*" element={<Navigate to="/control-panel/boss-panel" replace />} />
+              <Route path="/master-admin-supreme" element={<Navigate to="/control-panel/boss-panel" replace />} />
               <Route path="/admin/bulk-users" element={<RequireRole allowed={["boss_owner"]}><BulkUserCreation /></RequireRole>} />
               <Route path="/admin/role-manager" element={<RequireRole allowed={["boss_owner"]}><RoleManagerPage /></RequireRole>} />
 
