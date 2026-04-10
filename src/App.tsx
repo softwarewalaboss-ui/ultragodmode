@@ -221,7 +221,7 @@ const FranchiseSEOServices = () => <div>Franchise SEO</div>;
 const FranchiseTeamManagement = () => <div>Franchise Team</div>;
 const PremiumDemoShowcaseNew = () => <div>Premium Showcase</div>;
 const SettingsPage = () => <div>Settings</div>;
-const SuperAdminSystemDashboard = () => <div>Super Admin System</div>;
+// Removed: SuperAdminSystemDashboard stub (redirected to control-panel)
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
