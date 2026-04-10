@@ -422,46 +422,45 @@ const App = () => (
               <Route path="/franchise/lead-activity" element={<RequireRole allowed={["franchise", "super_admin"]}><FranchiseLayout><FranchiseLeadActivity /></FranchiseLayout></RequireRole>} />
               <Route path="/franchise-program" element={<FranchiseLanding />} />
               <Route path="/franchise-landing" element={<FranchiseLanding />} />
-              <Route path="/franchise-dashboard" element={<RequireRole allowed={["franchise", "super_admin"]}><FranchiseDashboard /></RequireRole>} />
+              <Route path="/franchise-dashboard" element={<Navigate to="/control-panel/franchise" replace />} />
 
-              {/* Reseller Routes */}
-              <Route path="/reseller" element={<RequireRole allowed={["reseller", "super_admin"]}><ResellerDashboard /></RequireRole>} />
-              <Route path="/reseller/dashboard" element={<RequireRole allowed={["reseller", "super_admin"]}><ResellerDashboard /></RequireRole>} />
-              <Route path="/reseller/portal" element={<RequireRole allowed={["reseller", "super_admin"]}><ResellerPortal /></RequireRole>} />
-              <Route path="/reseller-portal" element={<RequireRole allowed={["reseller", "super_admin"]}><ResellerPortal /></RequireRole>} />
+              {/* Reseller Routes - keep main, redirect duplicates */}
+              <Route path="/reseller" element={<Navigate to="/control-panel/reseller" replace />} />
+              <Route path="/reseller/dashboard" element={<Navigate to="/control-panel/reseller" replace />} />
+              <Route path="/reseller/portal" element={<Navigate to="/control-panel/reseller" replace />} />
+              <Route path="/reseller-portal" element={<Navigate to="/control-panel/reseller" replace />} />
               <Route path="/reseller-program" element={<ResellerLanding />} />
               <Route path="/reseller-landing" element={<ResellerLanding />} />
-              <Route path="/reseller-dashboard" element={<RequireRole allowed={["reseller", "super_admin"]}><ResellerDashboard /></RequireRole>} />
+              <Route path="/reseller-dashboard" element={<Navigate to="/control-panel/reseller" replace />} />
 
-              {/* Developer Routes */}
+              {/* Developer Routes - keep register, redirect duplicates */}
               <Route path="/developer/register" element={<RequireAuth><DeveloperRegistration /></RequireAuth>} />
               <Route path="/developer/registration" element={<RequireAuth><DeveloperRegistration /></RequireAuth>} />
-              <Route path="/developer" element={<RequireRole allowed={["developer", "super_admin"]}><DevCommandCenter /></RequireRole>} />
-              <Route path="/developer/dashboard" element={<RequireRole allowed={["developer", "super_admin"]}><DevCommandCenter /></RequireRole>} />
-              <Route path="/developer-dashboard" element={<RequireRole allowed={["developer", "super_admin"]}><DevCommandCenter /></RequireRole>} />
-              <Route path="/dev-command-center" element={<RequireRole allowed={["developer", "super_admin"]}><DevCommandCenter /></RequireRole>} />
+              <Route path="/developer" element={<Navigate to="/control-panel/developer" replace />} />
+              <Route path="/developer/dashboard" element={<Navigate to="/control-panel/developer" replace />} />
+              <Route path="/developer-dashboard" element={<Navigate to="/control-panel/developer" replace />} />
+              <Route path="/dev-command-center" element={<Navigate to="/control-panel/developer" replace />} />
 
-              {/* Influencer Routes */}
-              <Route path="/influencer" element={<RequireRole allowed={["influencer", "super_admin"]}><InfluencerDashboard /></RequireRole>} />
-              <Route path="/influencer/dashboard" element={<RequireRole allowed={["influencer", "super_admin"]}><InfluencerDashboard /></RequireRole>} />
-              <Route path="/influencer/command-center" element={<RequireRole allowed={["influencer", "super_admin"]}><InfluencerCommandCenter /></RequireRole>} />
-              <Route path="/influencer-command-center" element={<RequireRole allowed={["influencer", "super_admin"]}><InfluencerCommandCenter /></RequireRole>} />
-              <Route path="/influencer-dashboard" element={<RequireRole allowed={["influencer", "super_admin"]}><InfluencerDashboard /></RequireRole>} />
-              {/* @ts-ignore */}
-              <Route path="/influencer-manager" element={<RequireRole allowed={["super_admin"]}><InfluencerManager /></RequireRole>} />
-              <Route path="/influencer-manager-secure" element={<RequireRole allowed={["boss_owner", "super_admin"]}><SecureInfluencerManagerDashboard /></RequireRole>} />
+              {/* Influencer Routes → redirects */}
+              <Route path="/influencer" element={<Navigate to="/control-panel/influencer" replace />} />
+              <Route path="/influencer/dashboard" element={<Navigate to="/control-panel/influencer" replace />} />
+              <Route path="/influencer/command-center" element={<Navigate to="/control-panel/influencer" replace />} />
+              <Route path="/influencer-command-center" element={<Navigate to="/control-panel/influencer" replace />} />
+              <Route path="/influencer-dashboard" element={<Navigate to="/control-panel/influencer" replace />} />
+              <Route path="/influencer-manager" element={<Navigate to="/control-panel/influencer-manager" replace />} />
+              <Route path="/influencer-manager-secure" element={<Navigate to="/control-panel/influencer-manager" replace />} />
               
-              {/* Product Demo Manager Routes */}
-              <Route path="/product-demo-manager" element={<RequireRole allowed={["product_demo_manager", "demo_manager", "super_admin"]}><ProductDemoManagerPage /></RequireRole>} />
-              <Route path="/product-demo-manager/*" element={<RequireRole allowed={["product_demo_manager", "demo_manager", "super_admin"]}><ProductDemoManagerPage /></RequireRole>} />
+              {/* Product Demo Manager → redirect */}
+              <Route path="/product-demo-manager" element={<Navigate to="/control-panel/demo-manager" replace />} />
+              <Route path="/product-demo-manager/*" element={<Navigate to="/control-panel/demo-manager" replace />} />
 
-              {/* Reseller Manager Routes */}
-              <Route path="/reseller-manager" element={<RequireRole allowed={["reseller_manager", "super_admin"]}><SecureResellerManagerDashboard /></RequireRole>} />
-              <Route path="/reseller-manager-secure" element={<RequireRole allowed={["reseller_manager", "super_admin"]}><SecureResellerManagerDashboard /></RequireRole>} />
+              {/* Reseller Manager → redirect */}
+              <Route path="/reseller-manager" element={<Navigate to="/control-panel/reseller-manager" replace />} />
+              <Route path="/reseller-manager-secure" element={<Navigate to="/control-panel/reseller-manager" replace />} />
               
-              {/* Sales & Support Manager Routes (enum roles: client_success/support) */}
-              <Route path="/sales-support-manager" element={<RequireRole allowed={["client_success", "support", "super_admin"]}><SecureSalesSupportManagerDashboard /></RequireRole>} />
-              <Route path="/sales-support-manager-secure" element={<RequireRole allowed={["client_success", "support", "super_admin"]}><SecureSalesSupportManagerDashboard /></RequireRole>} />
+              {/* Sales Support → redirect */}
+              <Route path="/sales-support-manager" element={<Navigate to="/control-panel/sales-manager" replace />} />
+              <Route path="/sales-support-manager-secure" element={<Navigate to="/control-panel/sales-manager" replace />} />
               
               {/* Public demo route for Influencer Command Center */}
               <Route path="/demo/influencer-command-center" element={<InfluencerCommandCenter />} />
