@@ -2,7 +2,7 @@
 import React from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
-import AIBillingDashboard from "@/components/ai-billing/AIBillingDashboard";
+// Removed: AIBillingDashboard (duplicate - redirected to control-panel)
 import AICEOApprovals from "@/pages/ai-ceo/sections/AICEOApprovals";
 import AICEODashboard from "@/pages/ai-ceo/AICEODashboard";
 import AICEODashboardMain from "@/pages/ai-ceo/sections/AICEODashboardMain";
@@ -27,8 +27,7 @@ import { AuthProvider } from "@/hooks/useAuth";
 import AutoDevEngine from "@/pages/auto-dev/AutoDevEngine";
 import AutomotiveDemo from "@/pages/demos/AutomotiveDemo";
 import BootstrapAdmins from "@/pages/admin/BootstrapAdmins";
-import BossFortressAuth from "@/pages/auth/BossFortressAuth";
-import BossRegister from "@/pages/auth/BossRegister";
+// Removed: BossFortressAuth, BossRegister (duplicate boss auth - use /login)
 import BulkActionsReference from "@/pages/admin/BulkActionsReference";
 import BulkUserCreation from "@/pages/admin/BulkUserCreation";
 import ButtonAuditOverlay from "@/components/shared/ButtonAuditOverlay";
@@ -39,7 +38,7 @@ import ChangePassword from "@/pages/auth/ChangePassword";
 import ChildcareDemo from "@/pages/demos/ChildcareDemo";
 import ClientPortal from "@/pages/ClientPortal";
 import ClientSuccessDashboard from "@/pages/ClientSuccessDashboard";
-import ComplianceCenter from "@/pages/super-admin/ComplianceCenter";
+// Removed: ComplianceCenter (duplicate)
 import ContinentSuperAdminDashboard from "@/components/continent-dashboard/ContinentSuperAdminDashboard";
 import Dashboard from "@/components/franchise-landing/DashboardPreview";
 import DemoCredentials from "@/pages/DemoCredentials";
@@ -68,7 +67,7 @@ import FranchiseDemoRequest from "@/pages/franchise/DemoRequest";
 import FranchiseLanding from "@/components/franchise-landing/FranchiseLandingFooter";
 import FranchiseLayout from "@/components/layouts/FranchiseLayout";
 import FranchiseLeadBoardPage from "@/pages/franchise/LeadBoard";
-import FranchiseManagement from "@/pages/FranchiseManagement";
+// Removed: FranchiseManagement (duplicate)
 import FranchisePerformancePage from "@/pages/franchise/Performance";
 import FranchiseProfile from "@/pages/franchise/Profile";
 import FranchiseSalesCenter from "@/pages/franchise/SalesCenter";
@@ -95,29 +94,28 @@ import LeaderSecurityAssessment from "@/pages/leader-security/LeaderSecurityAsse
 import LegalComplianceManager from "@/pages/LegalComplianceManager";
 import LegalDemo from "@/pages/demos/LegalDemo";
 import LegalManagerDashboard from "@/pages/legal-manager/LegalManagerDashboard";
-import LiveTracking from "@/pages/super-admin/LiveTracking";
+// Removed: LiveTracking (duplicate)
 import LogisticsDemo from "@/pages/demos/LogisticsDemo";
 import Logout from "@/pages/auth/Logout";
 import ManufacturingDemo from "@/pages/demos/ManufacturingDemo";
 import { MarketingManagerScreen as MarketingManager } from "@/components/wireframe/screens/MarketingManagerScreen";
 import MarketingManagerDashboard from "@/pages/marketing-manager/MarketingManagerDashboard";
-import MasterAdminSupreme from "@/pages/master-admin-supreme/MasterAdminSupreme";
-import MasterControlCenter from "@/pages/master-control/MasterControlCenter";
+// Removed: MasterAdminSupreme, MasterControlCenter (duplicates - use /control-panel/boss-panel)
 import NotFound from "@/pages/NotFound";
 import NotificationBuzzerConsole from "@/pages/NotificationBuzzerConsole";
 import { NotificationProvider } from "@/contexts/NotificationContext";
 import OTPVerify from "@/pages/auth/OTPVerify";
 import PendingApproval from "@/pages/auth/PendingApproval";
 import { PerformanceManagerScreen as PerformanceManager } from "@/components/wireframe/screens/PerformanceManagerScreen";
-import PermissionMatrix from "@/pages/super-admin/PermissionMatrix";
+// Removed: PermissionMatrix (duplicate)
 import PersonalChat from "@/components/chat/PersonalChatSystem";
 import PetCareDemo from "@/pages/demos/PetCareDemo";
 import PremiumDemoShowcase from "@/pages/PremiumDemoShowcase";
-import PrimeManager from "@/pages/super-admin/PrimeManager";
+// Removed: PrimeManager (duplicate)
 import PrimeUserDashboard from "@/components/prime-user/PrimeUserDashboard";
 import ProductDemoManager from "@/pages/ProductDemoManager";
 import ProductDemoManagerPage from "@/pages/product-demo-manager/index";
-import ProductManagerPage from "@/pages/super-admin/ProductManagerPage";
+// Removed: ProductManagerPage (duplicate)
 import PromiseManagementDashboard from "@/pages/promise-management/PromiseManagementDashboard";
 import PromiseTrackerDashboard from "@/pages/promise-tracker/PromiseTrackerDashboard";
 import PublicDemos from "@/pages/demos/PublicDemos";
@@ -160,7 +158,7 @@ import SecureLegalManagerDashboard from "@/pages/legal-manager/SecureLegalManage
 import SecureResellerManagerDashboard from "@/pages/reseller-manager/SecureResellerManagerDashboard";
 import SecureSalesSupportManagerDashboard from "@/pages/sales-support-manager/SecureSalesSupportManagerDashboard";
 import SecureTaskManagerDashboard from "@/pages/task-manager/SecureTaskManagerDashboard";
-import SecurityCenter from "@/components/admin/SecurityCenter";
+// Removed: SecurityCenter (duplicate)
 import SecurityCommandCenter from "@/pages/security-command/SecurityCommandCenter";
 import SecurityDemo from "@/pages/demos/SecurityDemo";
 import { SecurityProvider } from "@/contexts/SecurityContext";
@@ -171,7 +169,7 @@ import SimpleCheckout from "@/pages/SimpleCheckout";
 import SimpleDemoList from "@/pages/SimpleDemoList";
 import SimpleDemoView from "@/pages/SimpleDemoView";
 import SimpleUserDashboard from "@/pages/SimpleUserDashboard";
-import SoftwareWalaOwnerDashboard from "@/pages/owner/SoftwareWalaOwnerDashboard";
+// Removed: SoftwareWalaOwnerDashboard (duplicate - use /control-panel/boss-panel)
 import SourceCodeProtection from "@/components/security/SourceCodeProtection";
 import SubCategoryDemos from "@/pages/SubCategoryDemos";
 import SuperAdminActivityLog from "@/pages/super-admin-system/ActivityLog";
@@ -188,7 +186,7 @@ import SuperAdminSecurity from "@/pages/super-admin-system/Security";
 import SuperAdminSystemLock from "@/pages/super-admin-system/SystemLock";
 import SuperAdminUsers from "@/pages/super-admin-system/Users";
 import SupportDashboard from "@/pages/SupportDashboard";
-import SystemAudit from "@/pages/super-admin/SystemAudit";
+// Removed: SystemAudit (duplicate)
 import SystemNotificationsInitializer from "@/components/notifications/SystemNotificationsInitializer";
 import SystemSettings from "@/pages/SystemSettings";
 import TaskManager from "@/components/tasks/TaskManagerTopBar";
@@ -198,7 +196,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TranslationProvider } from "@/contexts/TranslationContext";
 import TravelDemo from "@/pages/demos/TravelDemo";
 import UserDashboard from "@/pages/user/UserDashboard";
-import UserManager from "@/pages/super-admin/UserManager";
+// Removed: UserManager (duplicate)
 import ValaAIHeadWorkspace from "@/pages/vala-control/ValaAIHeadWorkspace";
 import ValaControlCenter from "@/pages/vala-control/ValaControlCenter";
 import ValaControlHub from "@/pages/vala-control/ValaControlHub";
@@ -223,7 +221,7 @@ const FranchiseSEOServices = () => <div>Franchise SEO</div>;
 const FranchiseTeamManagement = () => <div>Franchise Team</div>;
 const PremiumDemoShowcaseNew = () => <div>Premium Showcase</div>;
 const SettingsPage = () => <div>Settings</div>;
-const SuperAdminSystemDashboard = () => <div>Super Admin System</div>;
+// Removed: SuperAdminSystemDashboard stub (redirected to control-panel)
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
@@ -345,22 +343,16 @@ const App = () => (
               <Route path="/access-denied" element={<AccessDenied />} />
               <Route path="/session-expired" element={<SessionExpiredPage />} />
 
-              {/* Boss Fortress Auth - Ultra Secure */}
-              <Route path="/boss-fortress" element={<BossFortressAuth />} />
-              <Route path="/boss-register" element={<BossRegister />} />
-              <Route path="/boss/login" element={<SuperAdminLogin />} />
-
-              {/* Owner Dashboard - SoftwareWala Business Control */}
-              <Route path="/owner" element={<RequireRole allowed={["boss_owner"]}><SoftwareWalaOwnerDashboard /></RequireRole>} />
-              <Route path="/owner/*" element={<RequireRole allowed={["boss_owner"]}><SoftwareWalaOwnerDashboard /></RequireRole>} />
-              <Route path="/softwarewala" element={<RequireRole allowed={["boss_owner"]}><SoftwareWalaOwnerDashboard /></RequireRole>} />
-
-              {/* Boss Admin Routes - BOSS_OWNER ONLY */}
-              <Route path="/master-admin" element={<RequireRole allowed={["boss_owner"]}><MasterControlCenter /></RequireRole>} />
-              <Route path="/master-admin/*" element={<RequireRole allowed={["boss_owner"]}><MasterControlCenter /></RequireRole>} />
-              <Route path="/master-admin-supreme" element={<RequireRole allowed={["boss_owner"]}><MasterAdminSupreme /></RequireRole>} />
-              
-              {/* Admin Utilities - Boss Owner */}
+              {/* Old boss/admin routes → redirect to unified control panel */}
+              <Route path="/boss-fortress" element={<Navigate to="/login" replace />} />
+              <Route path="/boss-register" element={<Navigate to="/login" replace />} />
+              <Route path="/boss/login" element={<Navigate to="/login" replace />} />
+              <Route path="/owner" element={<Navigate to="/control-panel/boss-panel" replace />} />
+              <Route path="/owner/*" element={<Navigate to="/control-panel/boss-panel" replace />} />
+              <Route path="/softwarewala" element={<Navigate to="/control-panel/boss-panel" replace />} />
+              <Route path="/master-admin" element={<Navigate to="/control-panel/boss-panel" replace />} />
+              <Route path="/master-admin/*" element={<Navigate to="/control-panel/boss-panel" replace />} />
+              <Route path="/master-admin-supreme" element={<Navigate to="/control-panel/boss-panel" replace />} />
               <Route path="/admin/bulk-users" element={<RequireRole allowed={["boss_owner"]}><BulkUserCreation /></RequireRole>} />
               <Route path="/admin/role-manager" element={<RequireRole allowed={["boss_owner"]}><RoleManagerPage /></RequireRole>} />
 
@@ -414,30 +406,28 @@ const App = () => (
               {/* @ts-ignore */}
               <Route path="/continent-super-admin/*" element={<RequireRole allowed={["boss_owner"]}><ContinentSuperAdminDashboard /></RequireRole>} />
 
-              {/* Super Admin Routes - Redirect to unified RoleSwitchDashboard to prevent duplicate layouts */}
-              <Route path="/admin" element={<Navigate to="/super-admin-system/role-switch?role=boss_owner" replace />} />
-              <Route path="/super-admin" element={<Navigate to="/super-admin-system/role-switch?role=boss_owner" replace />} />
-              <Route path="/super-admin/dashboard" element={<Navigate to="/super-admin-system/role-switch?role=boss_owner" replace />} />
-              <Route path="/super-admin/command-center" element={<Navigate to="/super-admin-system/role-switch?role=boss_owner" replace />} />
-              <Route path="/super-admin/live-tracking" element={<RequireRole allowed={["boss_owner", "master", "ceo"]}><LiveTracking /></RequireRole>} />
-              <Route path="/super-admin/role-manager" element={<RequireRole allowed={["boss_owner", "master", "ceo"]}><RoleManager /></RequireRole>} />
-              <Route path="/super-admin/user-manager" element={<RequireRole allowed={["boss_owner", "master", "ceo"]}><UserManager /></RequireRole>} />
-              <Route path="/super-admin/permission-matrix" element={<RequireRole allowed={["boss_owner", "master", "ceo"]}><PermissionMatrix /></RequireRole>} />
-              <Route path="/super-admin/security-center" element={<RequireRole allowed={["boss_owner", "master", "ceo"]}><SecurityCenter /></RequireRole>} />
-              <Route path="/super-admin/demo-manager" element={<RequireRole allowed={["boss_owner", "master", "ceo"]}><ProductDemoManager /></RequireRole>} />
-              <Route path="/super-admin/product-manager" element={<RequireRole allowed={["boss_owner", "master", "ceo"]}><ProductManagerPage /></RequireRole>} />
-              <Route path="/super-admin/system-settings" element={<RequireRole allowed={["boss_owner", "master", "ceo"]}><SystemSettings /></RequireRole>} />
-              {/* @ts-ignore */}
-              <Route path="/super-admin/system-audit" element={<RequireRole allowed={["boss_owner"]}><SystemAudit /></RequireRole>} />
-              <Route path="/super-admin/prime-manager" element={<RequireRole allowed={["boss_owner"]}><PrimeManager /></RequireRole>} />
-              {/* @ts-ignore */}
-              <Route path="/super-admin/influencer-manager" element={<RequireRole allowed={["boss_owner"]}><InfluencerManager /></RequireRole>} />
-              <Route path="/super-admin/finance-center" element={<RequireRole allowed={["boss_owner"]}><FinanceManager /></RequireRole>} />
-              <Route path="/super-admin/support-center" element={<RequireRole allowed={["boss_owner"]}><SupportDashboard /></RequireRole>} />
-              <Route path="/super-admin/ai-billing" element={<RequireRole allowed={["boss_owner"]}><AIBillingDashboard /></RequireRole>} />
-              <Route path="/super-admin/franchise-manager" element={<RequireRole allowed={["boss_owner"]}><FranchiseManagement /></RequireRole>} />
-              <Route path="/super-admin/compliance-center" element={<RequireRole allowed={["boss_owner"]}><ComplianceCenter /></RequireRole>} />
-              <Route path="/super-admin/performance" element={<RequireRole allowed={["boss_owner"]}><PerformanceManager /></RequireRole>} />
+              {/* Super Admin Routes → redirect to control panel */}
+              <Route path="/admin" element={<Navigate to="/control-panel/boss-panel" replace />} />
+              <Route path="/super-admin" element={<Navigate to="/control-panel/boss-panel" replace />} />
+              <Route path="/super-admin/dashboard" element={<Navigate to="/control-panel/boss-panel" replace />} />
+              <Route path="/super-admin/command-center" element={<Navigate to="/control-panel/boss-panel" replace />} />
+              <Route path="/super-admin/live-tracking" element={<Navigate to="/control-panel/boss-panel" replace />} />
+              <Route path="/super-admin/role-manager" element={<Navigate to="/control-panel/boss-panel" replace />} />
+              <Route path="/super-admin/user-manager" element={<Navigate to="/control-panel/boss-panel" replace />} />
+              <Route path="/super-admin/permission-matrix" element={<Navigate to="/control-panel/boss-panel" replace />} />
+              <Route path="/super-admin/security-center" element={<Navigate to="/control-panel/boss-panel" replace />} />
+              <Route path="/super-admin/demo-manager" element={<Navigate to="/control-panel/demo-manager" replace />} />
+              <Route path="/super-admin/product-manager" element={<Navigate to="/control-panel/product-manager" replace />} />
+              <Route path="/super-admin/system-settings" element={<Navigate to="/control-panel/settings" replace />} />
+              <Route path="/super-admin/system-audit" element={<Navigate to="/control-panel/audit" replace />} />
+              <Route path="/super-admin/prime-manager" element={<Navigate to="/control-panel/pro-manager" replace />} />
+              <Route path="/super-admin/influencer-manager" element={<Navigate to="/control-panel/influencer-manager" replace />} />
+              <Route path="/super-admin/finance-center" element={<Navigate to="/control-panel/finance" replace />} />
+              <Route path="/super-admin/support-center" element={<Navigate to="/control-panel/customer-support" replace />} />
+              <Route path="/super-admin/ai-billing" element={<Navigate to="/control-panel/boss-panel" replace />} />
+              <Route path="/super-admin/franchise-manager" element={<Navigate to="/control-panel/franchise-manager" replace />} />
+              <Route path="/super-admin/compliance-center" element={<Navigate to="/control-panel/legal" replace />} />
+              <Route path="/super-admin/performance" element={<Navigate to="/control-panel/boss-panel" replace />} />
 
               {/* Franchise Routes */}
               <Route path="/franchise" element={<RequireRole allowed={["franchise", "super_admin"]}><FranchiseLayout><FranchiseDashboardPage /></FranchiseLayout></RequireRole>} />
@@ -608,36 +598,34 @@ const App = () => (
               {/* Wireframe Routes - Design Sandbox */}
               <Route path="/wireframe/*" element={<WireframeRoutes />} />
 
-              {/* Super Admin System Routes */}
-              {/* Explicit dashboard aliases (never allow route-not-found -> blank screen) */}
-              <Route path="/boss/dashboard" element={<Navigate to="/super-admin-system/role-switch?role=boss_owner" replace />} />
-              <Route path="/ceo/dashboard" element={<Navigate to="/super-admin-system/role-switch?role=ceo" replace />} />
-              <Route path="/admin/dashboard" element={<Navigate to="/super-admin-system/role-switch?role=admin" replace />} />
-              <Route path="/continent/dashboard" element={<Navigate to="/super-admin-system/role-switch?role=continent_super_admin" replace />} />
-              <Route path="/country/dashboard" element={<Navigate to="/super-admin-system/role-switch?role=country_head" replace />} />
+              {/* Dashboard aliases → control panel redirects */}
+              <Route path="/boss/dashboard" element={<Navigate to="/control-panel/boss-panel" replace />} />
+              <Route path="/ceo/dashboard" element={<Navigate to="/control-panel/ceo" replace />} />
+              <Route path="/admin/dashboard" element={<Navigate to="/control-panel/boss-panel" replace />} />
+              <Route path="/continent/dashboard" element={<Navigate to="/control-panel/continent" replace />} />
+              <Route path="/country/dashboard" element={<Navigate to="/control-panel/country-head" replace />} />
 
-              <Route path="/super-admin-system" element={<Navigate to="/super-admin-system/dashboard" replace />} />
-              {/* Short aliases (avoid 404 when users type abbreviated links) */}
-              <Route path="/super-admin-system/rc" element={<Navigate to="/super-admin-system/role-switch?role=boss_owner" replace />} />
-              <Route path="/super-admin-system/role-center" element={<Navigate to="/super-admin-system/role-switch?role=boss_owner" replace />} />
+              <Route path="/super-admin-system" element={<Navigate to="/control-panel/boss-panel" replace />} />
+              <Route path="/super-admin-system/rc" element={<Navigate to="/control-panel/boss-panel" replace />} />
+              <Route path="/super-admin-system/role-center" element={<Navigate to="/control-panel/boss-panel" replace />} />
 
               <Route path="/super-admin-system/login" element={<SuperAdminLogin />} />
-              {/* Role switcher - Protected for privileged roles */}
+              {/* Role switcher - needed by ControlPanelRouter */}
               <Route path="/super-admin-system/role-switch" element={<RequireRole allowed={['boss_owner', 'ceo', 'admin', 'super_admin', 'master', 'continent_super_admin', 'country_head']}><RoleSwitchDashboard /></RequireRole>} />
               <Route path="/super-admin-system/role-switch/*" element={<RequireRole allowed={['boss_owner', 'ceo', 'admin', 'super_admin', 'master', 'continent_super_admin', 'country_head']}><RoleSwitchDashboard /></RequireRole>} />
-              <Route path="/super-admin-system/dashboard" element={<SuperAdminSystemDashboard />} />
-              <Route path="/super-admin-system/users" element={<SuperAdminUsers />} />
-              <Route path="/super-admin-system/admins" element={<SuperAdminAdmins />} />
-              <Route path="/super-admin-system/roles" element={<SuperAdminRoles />} />
-              <Route path="/super-admin-system/geography" element={<SuperAdminGeography />} />
-              <Route path="/super-admin-system/modules" element={<SuperAdminModules />} />
-              <Route path="/super-admin-system/rentals" element={<SuperAdminRentals />} />
-              <Route path="/super-admin-system/rules" element={<SuperAdminRules />} />
-              <Route path="/super-admin-system/approvals" element={<SuperAdminApprovals />} />
-              <Route path="/super-admin-system/security" element={<SuperAdminSecurity />} />
-              <Route path="/super-admin-system/locks" element={<SuperAdminSystemLock />} />
-              <Route path="/super-admin-system/activity-log" element={<SuperAdminActivityLog />} />
-              <Route path="/super-admin-system/audit" element={<SuperAdminAudit />} />
+              <Route path="/super-admin-system/dashboard" element={<Navigate to="/control-panel/boss-panel" replace />} />
+              <Route path="/super-admin-system/users" element={<Navigate to="/control-panel/boss-panel" replace />} />
+              <Route path="/super-admin-system/admins" element={<Navigate to="/control-panel/boss-panel" replace />} />
+              <Route path="/super-admin-system/roles" element={<Navigate to="/control-panel/boss-panel" replace />} />
+              <Route path="/super-admin-system/geography" element={<Navigate to="/control-panel/country-head" replace />} />
+              <Route path="/super-admin-system/modules" element={<Navigate to="/control-panel/boss-panel" replace />} />
+              <Route path="/super-admin-system/rentals" element={<Navigate to="/control-panel/boss-panel" replace />} />
+              <Route path="/super-admin-system/rules" element={<Navigate to="/control-panel/boss-panel" replace />} />
+              <Route path="/super-admin-system/approvals" element={<Navigate to="/control-panel/boss-panel" replace />} />
+              <Route path="/super-admin-system/security" element={<Navigate to="/control-panel/security" replace />} />
+              <Route path="/super-admin-system/locks" element={<Navigate to="/control-panel/security" replace />} />
+              <Route path="/super-admin-system/activity-log" element={<Navigate to="/control-panel/audit" replace />} />
+              <Route path="/super-admin-system/audit" element={<Navigate to="/control-panel/audit" replace />} />
 
               {/* Leader Security Assessment */}
               <Route path="/leader-security" element={<LeaderSecurityAssessment />} />
