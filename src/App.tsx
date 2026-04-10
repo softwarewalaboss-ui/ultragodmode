@@ -598,36 +598,34 @@ const App = () => (
               {/* Wireframe Routes - Design Sandbox */}
               <Route path="/wireframe/*" element={<WireframeRoutes />} />
 
-              {/* Super Admin System Routes */}
-              {/* Explicit dashboard aliases (never allow route-not-found -> blank screen) */}
-              <Route path="/boss/dashboard" element={<Navigate to="/super-admin-system/role-switch?role=boss_owner" replace />} />
-              <Route path="/ceo/dashboard" element={<Navigate to="/super-admin-system/role-switch?role=ceo" replace />} />
-              <Route path="/admin/dashboard" element={<Navigate to="/super-admin-system/role-switch?role=admin" replace />} />
-              <Route path="/continent/dashboard" element={<Navigate to="/super-admin-system/role-switch?role=continent_super_admin" replace />} />
-              <Route path="/country/dashboard" element={<Navigate to="/super-admin-system/role-switch?role=country_head" replace />} />
+              {/* Dashboard aliases → control panel redirects */}
+              <Route path="/boss/dashboard" element={<Navigate to="/control-panel/boss-panel" replace />} />
+              <Route path="/ceo/dashboard" element={<Navigate to="/control-panel/ceo" replace />} />
+              <Route path="/admin/dashboard" element={<Navigate to="/control-panel/boss-panel" replace />} />
+              <Route path="/continent/dashboard" element={<Navigate to="/control-panel/continent" replace />} />
+              <Route path="/country/dashboard" element={<Navigate to="/control-panel/country-head" replace />} />
 
-              <Route path="/super-admin-system" element={<Navigate to="/super-admin-system/dashboard" replace />} />
-              {/* Short aliases (avoid 404 when users type abbreviated links) */}
-              <Route path="/super-admin-system/rc" element={<Navigate to="/super-admin-system/role-switch?role=boss_owner" replace />} />
-              <Route path="/super-admin-system/role-center" element={<Navigate to="/super-admin-system/role-switch?role=boss_owner" replace />} />
+              <Route path="/super-admin-system" element={<Navigate to="/control-panel/boss-panel" replace />} />
+              <Route path="/super-admin-system/rc" element={<Navigate to="/control-panel/boss-panel" replace />} />
+              <Route path="/super-admin-system/role-center" element={<Navigate to="/control-panel/boss-panel" replace />} />
 
               <Route path="/super-admin-system/login" element={<SuperAdminLogin />} />
-              {/* Role switcher - Protected for privileged roles */}
+              {/* Role switcher - needed by ControlPanelRouter */}
               <Route path="/super-admin-system/role-switch" element={<RequireRole allowed={['boss_owner', 'ceo', 'admin', 'super_admin', 'master', 'continent_super_admin', 'country_head']}><RoleSwitchDashboard /></RequireRole>} />
               <Route path="/super-admin-system/role-switch/*" element={<RequireRole allowed={['boss_owner', 'ceo', 'admin', 'super_admin', 'master', 'continent_super_admin', 'country_head']}><RoleSwitchDashboard /></RequireRole>} />
-              <Route path="/super-admin-system/dashboard" element={<SuperAdminSystemDashboard />} />
-              <Route path="/super-admin-system/users" element={<SuperAdminUsers />} />
-              <Route path="/super-admin-system/admins" element={<SuperAdminAdmins />} />
-              <Route path="/super-admin-system/roles" element={<SuperAdminRoles />} />
-              <Route path="/super-admin-system/geography" element={<SuperAdminGeography />} />
-              <Route path="/super-admin-system/modules" element={<SuperAdminModules />} />
-              <Route path="/super-admin-system/rentals" element={<SuperAdminRentals />} />
-              <Route path="/super-admin-system/rules" element={<SuperAdminRules />} />
-              <Route path="/super-admin-system/approvals" element={<SuperAdminApprovals />} />
-              <Route path="/super-admin-system/security" element={<SuperAdminSecurity />} />
-              <Route path="/super-admin-system/locks" element={<SuperAdminSystemLock />} />
-              <Route path="/super-admin-system/activity-log" element={<SuperAdminActivityLog />} />
-              <Route path="/super-admin-system/audit" element={<SuperAdminAudit />} />
+              <Route path="/super-admin-system/dashboard" element={<Navigate to="/control-panel/boss-panel" replace />} />
+              <Route path="/super-admin-system/users" element={<Navigate to="/control-panel/boss-panel" replace />} />
+              <Route path="/super-admin-system/admins" element={<Navigate to="/control-panel/boss-panel" replace />} />
+              <Route path="/super-admin-system/roles" element={<Navigate to="/control-panel/boss-panel" replace />} />
+              <Route path="/super-admin-system/geography" element={<Navigate to="/control-panel/country-head" replace />} />
+              <Route path="/super-admin-system/modules" element={<Navigate to="/control-panel/boss-panel" replace />} />
+              <Route path="/super-admin-system/rentals" element={<Navigate to="/control-panel/boss-panel" replace />} />
+              <Route path="/super-admin-system/rules" element={<Navigate to="/control-panel/boss-panel" replace />} />
+              <Route path="/super-admin-system/approvals" element={<Navigate to="/control-panel/boss-panel" replace />} />
+              <Route path="/super-admin-system/security" element={<Navigate to="/control-panel/security" replace />} />
+              <Route path="/super-admin-system/locks" element={<Navigate to="/control-panel/security" replace />} />
+              <Route path="/super-admin-system/activity-log" element={<Navigate to="/control-panel/audit" replace />} />
+              <Route path="/super-admin-system/audit" element={<Navigate to="/control-panel/audit" replace />} />
 
               {/* Leader Security Assessment */}
               <Route path="/leader-security" element={<LeaderSecurityAssessment />} />
