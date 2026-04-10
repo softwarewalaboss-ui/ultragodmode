@@ -27,8 +27,7 @@ import { AuthProvider } from "@/hooks/useAuth";
 import AutoDevEngine from "@/pages/auto-dev/AutoDevEngine";
 import AutomotiveDemo from "@/pages/demos/AutomotiveDemo";
 import BootstrapAdmins from "@/pages/admin/BootstrapAdmins";
-import BossFortressAuth from "@/pages/auth/BossFortressAuth";
-import BossRegister from "@/pages/auth/BossRegister";
+// Removed: BossFortressAuth, BossRegister (duplicate boss auth - use /login)
 import BulkActionsReference from "@/pages/admin/BulkActionsReference";
 import BulkUserCreation from "@/pages/admin/BulkUserCreation";
 import ButtonAuditOverlay from "@/components/shared/ButtonAuditOverlay";
@@ -101,8 +100,7 @@ import Logout from "@/pages/auth/Logout";
 import ManufacturingDemo from "@/pages/demos/ManufacturingDemo";
 import { MarketingManagerScreen as MarketingManager } from "@/components/wireframe/screens/MarketingManagerScreen";
 import MarketingManagerDashboard from "@/pages/marketing-manager/MarketingManagerDashboard";
-import MasterAdminSupreme from "@/pages/master-admin-supreme/MasterAdminSupreme";
-import MasterControlCenter from "@/pages/master-control/MasterControlCenter";
+// Removed: MasterAdminSupreme, MasterControlCenter (duplicates - use /control-panel/boss-panel)
 import NotFound from "@/pages/NotFound";
 import NotificationBuzzerConsole from "@/pages/NotificationBuzzerConsole";
 import { NotificationProvider } from "@/contexts/NotificationContext";
@@ -171,7 +169,7 @@ import SimpleCheckout from "@/pages/SimpleCheckout";
 import SimpleDemoList from "@/pages/SimpleDemoList";
 import SimpleDemoView from "@/pages/SimpleDemoView";
 import SimpleUserDashboard from "@/pages/SimpleUserDashboard";
-import SoftwareWalaOwnerDashboard from "@/pages/owner/SoftwareWalaOwnerDashboard";
+// Removed: SoftwareWalaOwnerDashboard (duplicate - use /control-panel/boss-panel)
 import SourceCodeProtection from "@/components/security/SourceCodeProtection";
 import SubCategoryDemos from "@/pages/SubCategoryDemos";
 import SuperAdminActivityLog from "@/pages/super-admin-system/ActivityLog";
