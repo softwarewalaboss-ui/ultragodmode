@@ -2,7 +2,7 @@
 import React from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
-import AIBillingDashboard from "@/components/ai-billing/AIBillingDashboard";
+// Removed: AIBillingDashboard (duplicate - redirected to control-panel)
 import AICEOApprovals from "@/pages/ai-ceo/sections/AICEOApprovals";
 import AICEODashboard from "@/pages/ai-ceo/AICEODashboard";
 import AICEODashboardMain from "@/pages/ai-ceo/sections/AICEODashboardMain";
@@ -38,7 +38,7 @@ import ChangePassword from "@/pages/auth/ChangePassword";
 import ChildcareDemo from "@/pages/demos/ChildcareDemo";
 import ClientPortal from "@/pages/ClientPortal";
 import ClientSuccessDashboard from "@/pages/ClientSuccessDashboard";
-import ComplianceCenter from "@/pages/super-admin/ComplianceCenter";
+// Removed: ComplianceCenter (duplicate)
 import ContinentSuperAdminDashboard from "@/components/continent-dashboard/ContinentSuperAdminDashboard";
 import Dashboard from "@/components/franchise-landing/DashboardPreview";
 import DemoCredentials from "@/pages/DemoCredentials";
@@ -67,7 +67,7 @@ import FranchiseDemoRequest from "@/pages/franchise/DemoRequest";
 import FranchiseLanding from "@/components/franchise-landing/FranchiseLandingFooter";
 import FranchiseLayout from "@/components/layouts/FranchiseLayout";
 import FranchiseLeadBoardPage from "@/pages/franchise/LeadBoard";
-import FranchiseManagement from "@/pages/FranchiseManagement";
+// Removed: FranchiseManagement (duplicate)
 import FranchisePerformancePage from "@/pages/franchise/Performance";
 import FranchiseProfile from "@/pages/franchise/Profile";
 import FranchiseSalesCenter from "@/pages/franchise/SalesCenter";
@@ -94,7 +94,7 @@ import LeaderSecurityAssessment from "@/pages/leader-security/LeaderSecurityAsse
 import LegalComplianceManager from "@/pages/LegalComplianceManager";
 import LegalDemo from "@/pages/demos/LegalDemo";
 import LegalManagerDashboard from "@/pages/legal-manager/LegalManagerDashboard";
-import LiveTracking from "@/pages/super-admin/LiveTracking";
+// Removed: LiveTracking (duplicate)
 import LogisticsDemo from "@/pages/demos/LogisticsDemo";
 import Logout from "@/pages/auth/Logout";
 import ManufacturingDemo from "@/pages/demos/ManufacturingDemo";
@@ -107,15 +107,15 @@ import { NotificationProvider } from "@/contexts/NotificationContext";
 import OTPVerify from "@/pages/auth/OTPVerify";
 import PendingApproval from "@/pages/auth/PendingApproval";
 import { PerformanceManagerScreen as PerformanceManager } from "@/components/wireframe/screens/PerformanceManagerScreen";
-import PermissionMatrix from "@/pages/super-admin/PermissionMatrix";
+// Removed: PermissionMatrix (duplicate)
 import PersonalChat from "@/components/chat/PersonalChatSystem";
 import PetCareDemo from "@/pages/demos/PetCareDemo";
 import PremiumDemoShowcase from "@/pages/PremiumDemoShowcase";
-import PrimeManager from "@/pages/super-admin/PrimeManager";
+// Removed: PrimeManager (duplicate)
 import PrimeUserDashboard from "@/components/prime-user/PrimeUserDashboard";
 import ProductDemoManager from "@/pages/ProductDemoManager";
 import ProductDemoManagerPage from "@/pages/product-demo-manager/index";
-import ProductManagerPage from "@/pages/super-admin/ProductManagerPage";
+// Removed: ProductManagerPage (duplicate)
 import PromiseManagementDashboard from "@/pages/promise-management/PromiseManagementDashboard";
 import PromiseTrackerDashboard from "@/pages/promise-tracker/PromiseTrackerDashboard";
 import PublicDemos from "@/pages/demos/PublicDemos";
@@ -158,7 +158,7 @@ import SecureLegalManagerDashboard from "@/pages/legal-manager/SecureLegalManage
 import SecureResellerManagerDashboard from "@/pages/reseller-manager/SecureResellerManagerDashboard";
 import SecureSalesSupportManagerDashboard from "@/pages/sales-support-manager/SecureSalesSupportManagerDashboard";
 import SecureTaskManagerDashboard from "@/pages/task-manager/SecureTaskManagerDashboard";
-import SecurityCenter from "@/components/admin/SecurityCenter";
+// Removed: SecurityCenter (duplicate)
 import SecurityCommandCenter from "@/pages/security-command/SecurityCommandCenter";
 import SecurityDemo from "@/pages/demos/SecurityDemo";
 import { SecurityProvider } from "@/contexts/SecurityContext";
@@ -186,7 +186,7 @@ import SuperAdminSecurity from "@/pages/super-admin-system/Security";
 import SuperAdminSystemLock from "@/pages/super-admin-system/SystemLock";
 import SuperAdminUsers from "@/pages/super-admin-system/Users";
 import SupportDashboard from "@/pages/SupportDashboard";
-import SystemAudit from "@/pages/super-admin/SystemAudit";
+// Removed: SystemAudit (duplicate)
 import SystemNotificationsInitializer from "@/components/notifications/SystemNotificationsInitializer";
 import SystemSettings from "@/pages/SystemSettings";
 import TaskManager from "@/components/tasks/TaskManagerTopBar";
@@ -196,7 +196,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TranslationProvider } from "@/contexts/TranslationContext";
 import TravelDemo from "@/pages/demos/TravelDemo";
 import UserDashboard from "@/pages/user/UserDashboard";
-import UserManager from "@/pages/super-admin/UserManager";
+// Removed: UserManager (duplicate)
 import ValaAIHeadWorkspace from "@/pages/vala-control/ValaAIHeadWorkspace";
 import ValaControlCenter from "@/pages/vala-control/ValaControlCenter";
 import ValaControlHub from "@/pages/vala-control/ValaControlHub";
