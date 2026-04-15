@@ -24,6 +24,10 @@ import SecureLegalManagerDashboard from '@/pages/legal-manager/SecureLegalManage
 import SecureTaskManagerDashboard from '@/pages/task-manager/SecureTaskManagerDashboard';
 import FranchiseLayout from '@/components/layouts/FranchiseLayout';
 import RoleSwitchDashboard from '@/pages/super-admin-system/RoleSwitch/RoleSwitchDashboard';
+import ResellerDashboard from '@/pages/ResellerDashboard';
+import InfluencerDashboard from '@/pages/InfluencerDashboard';
+import SecureDeveloperDashboard from '@/pages/developer/SecureDeveloperDashboard';
+import UserDashboard from '@/pages/user/UserDashboard';
 
 // ─── Franchise wrapper (uses RoleSwitchDashboard) ─────────────────────────────
 const FranchiseModule: React.FC = () => (
