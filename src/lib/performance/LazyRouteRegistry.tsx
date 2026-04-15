@@ -125,12 +125,8 @@ export const LazySecureResellerManagerDashboard = createLazyRoute(() => import('
 export const LazySecureSalesSupportManagerDashboard = createLazyRoute(() => import('@/pages/sales-support-manager/SecureSalesSupportManagerDashboard'));
 
 // ============================================
-// MASTER ADMIN & CONTROL
+// MASTER ADMIN & CONTROL (removed - redirected to /control-panel)
 // ============================================
-export const LazyMasterAdminDashboard = createLazyRoute(() => import('@/pages/master-admin/MasterAdminDashboard'));
-export const LazyMasterControlCenter = createLazyRoute(() => import('@/pages/master-control/MasterControlCenter'));
-export const LazyMasterAdminSupreme = createLazyRoute(() => import('@/pages/master-admin-supreme/MasterAdminSupreme'));
-export const LazySoftwareWalaOwnerDashboard = createLazyRoute(() => import('@/pages/owner/SoftwareWalaOwnerDashboard'));
 export const LazyBootstrapAdmins = createLazyRoute(() => import('@/pages/admin/BootstrapAdmins'));
 export const LazyRoleManagerPage = createLazyRoute(() => import('@/pages/admin/RoleManagerPage'));
 
@@ -145,15 +141,9 @@ export const LazyValaAIHeadWorkspace = createLazyRoute(() => import('@/pages/val
 export const LazyValaMasterWorkspace = createLazyRoute(() => import('@/pages/vala-control/ValaMasterWorkspace'));
 
 // ============================================
-// FRANCHISE ROUTES
+// FRANCHISE ROUTES (removed - redirected to /control-panel/franchise)
 // ============================================
 export const LazyFranchiseLayout = createLazyRoute(() => import('@/components/layouts/FranchiseLayout'));
-export const LazyFranchiseDashboardPage = createLazyRoute(() => import('@/pages/franchise/Dashboard'));
-export const LazyFranchiseProfile = createLazyRoute(() => import('@/pages/franchise/Profile'));
-export const LazyFranchiseWalletPage = createLazyRoute(() => import('@/pages/franchise/Wallet'));
-export const LazyFranchiseManagement = createLazyRoute(() => import('@/pages/FranchiseManagement'));
-export const LazyFranchiseLanding = createLazyRoute(() => import('@/pages/FranchiseLanding'));
-export const LazyFranchiseDashboard = createLazyRoute(() => import('@/pages/FranchiseDashboard'));
 
 // ============================================
 // ROLE DASHBOARDS
