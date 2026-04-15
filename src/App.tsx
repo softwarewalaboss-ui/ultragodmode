@@ -438,6 +438,8 @@ const App = () => (
               <Route path="/admin/dashboard" element={<Navigate to="/control-panel/boss-panel" replace />} />
               <Route path="/continent/dashboard" element={<Navigate to="/control-panel/continent" replace />} />
               <Route path="/country/dashboard" element={<Navigate to="/control-panel/country-head" replace />} />
+              <Route path="/dashboard/boss" element={<Navigate to="/control-panel/boss-panel" replace />} />
+              <Route path="/dashboard/*" element={<Navigate to="/control-panel/boss-panel" replace />} />
 
               <Route path="/super-admin-system" element={<Navigate to="/control-panel/boss-panel" replace />} />
               <Route path="/super-admin-system/rc" element={<Navigate to="/control-panel/boss-panel" replace />} />
