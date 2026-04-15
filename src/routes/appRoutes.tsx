@@ -22,18 +22,12 @@ import SecureMarketingManagerDashboard from '@/pages/marketing-manager/SecureMar
 import SecureSEOManagerDashboard from '@/pages/seo-manager/SecureSEOManagerDashboard';
 import SecureLegalManagerDashboard from '@/pages/legal-manager/SecureLegalManagerDashboard';
 import SecureTaskManagerDashboard from '@/pages/task-manager/SecureTaskManagerDashboard';
-import FranchiseDashboardPage from '@/pages/franchise/Dashboard';
 import FranchiseLayout from '@/components/layouts/FranchiseLayout';
-import ResellerDashboard from '@/pages/ResellerDashboard';
-import InfluencerDashboard from '@/pages/InfluencerDashboard';
-import SecureDeveloperDashboard from '@/pages/developer/SecureDeveloperDashboard';
-import UserDashboard from '@/pages/user/UserDashboard';
+import RoleSwitchDashboard from '@/pages/super-admin-system/RoleSwitch/RoleSwitchDashboard';
 
-// ─── Franchise wrapper ────────────────────────────────────────────────────────
+// ─── Franchise wrapper (uses RoleSwitchDashboard) ─────────────────────────────
 const FranchiseModule: React.FC = () => (
-  <FranchiseLayout>
-    <FranchiseDashboardPage />
-  </FranchiseLayout>
+  <RoleSwitchDashboard />
 );
 
 // ─── Route tree ───────────────────────────────────────────────────────────────
