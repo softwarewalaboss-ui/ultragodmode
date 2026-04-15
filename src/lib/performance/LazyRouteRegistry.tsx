@@ -125,12 +125,9 @@ export const LazySecureResellerManagerDashboard = createLazyRoute(() => import('
 export const LazySecureSalesSupportManagerDashboard = createLazyRoute(() => import('@/pages/sales-support-manager/SecureSalesSupportManagerDashboard'));
 
 // ============================================
-// MASTER ADMIN & CONTROL
+// MASTER ADMIN & CONTROL (removed - redirected to /control-panel)
 // ============================================
-export const LazyMasterAdminDashboard = createLazyRoute(() => import('@/pages/master-admin/MasterAdminDashboard'));
-export const LazyMasterControlCenter = createLazyRoute(() => import('@/pages/master-control/MasterControlCenter'));
-export const LazyMasterAdminSupreme = createLazyRoute(() => import('@/pages/master-admin-supreme/MasterAdminSupreme'));
-export const LazySoftwareWalaOwnerDashboard = createLazyRoute(() => import('@/pages/owner/SoftwareWalaOwnerDashboard'));
+export const LazyBootstrapAdmins = createLazyRoute(() => import('@/pages/admin/BootstrapAdmins'));
 export const LazyBootstrapAdmins = createLazyRoute(() => import('@/pages/admin/BootstrapAdmins'));
 export const LazyRoleManagerPage = createLazyRoute(() => import('@/pages/admin/RoleManagerPage'));
 
