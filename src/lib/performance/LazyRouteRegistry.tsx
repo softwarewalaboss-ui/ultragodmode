@@ -128,7 +128,6 @@ export const LazySecureSalesSupportManagerDashboard = createLazyRoute(() => impo
 // MASTER ADMIN & CONTROL (removed - redirected to /control-panel)
 // ============================================
 export const LazyBootstrapAdmins = createLazyRoute(() => import('@/pages/admin/BootstrapAdmins'));
-export const LazyBootstrapAdmins = createLazyRoute(() => import('@/pages/admin/BootstrapAdmins'));
 export const LazyRoleManagerPage = createLazyRoute(() => import('@/pages/admin/RoleManagerPage'));
 
 // ============================================
