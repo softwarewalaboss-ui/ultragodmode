@@ -87,18 +87,8 @@ export const LazyAccountingDemo = createLazyRoute(() => import('@/pages/accounti
 export const LazyProAccountingDemo = createLazyRoute(() => import('@/pages/pro-accounting/ProAccountingDemo'));
 
 // ============================================
-// SUPER ADMIN & MANAGEMENT ROUTES
+// SUPER ADMIN & MANAGEMENT ROUTES (removed - redirected to /control-panel)
 // ============================================
-export const LazySuperAdminCommandCenter = createLazyRoute(() => import('@/pages/super-admin/CommandCenter'));
-export const LazyLiveTracking = createLazyRoute(() => import('@/pages/super-admin/LiveTracking'));
-export const LazyRoleManager = createLazyRoute(() => import('@/pages/super-admin/RoleManager'));
-export const LazyUserManager = createLazyRoute(() => import('@/pages/super-admin/UserManager'));
-export const LazyPermissionMatrix = createLazyRoute(() => import('@/pages/super-admin/PermissionMatrix'));
-export const LazySecurityCenter = createLazyRoute(() => import('@/pages/super-admin/SecurityCenter'));
-export const LazyProductManagerPage = createLazyRoute(() => import('@/pages/super-admin/ProductManagerPage'));
-export const LazySystemAudit = createLazyRoute(() => import('@/pages/super-admin/SystemAudit'));
-export const LazyComplianceCenter = createLazyRoute(() => import('@/pages/super-admin/ComplianceCenter'));
-export const LazyPrimeManager = createLazyRoute(() => import('@/pages/super-admin/PrimeManager'));
 
 // ============================================
 // MANAGER DASHBOARDS

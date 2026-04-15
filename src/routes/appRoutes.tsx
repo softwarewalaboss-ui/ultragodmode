@@ -15,7 +15,7 @@ import MarketplaceOffersPage from '@/pages/MarketplaceOffersPage';
 import PerformanceManager from '@/pages/PerformanceManager';
 import NotificationBuzzerConsole from '@/pages/NotificationBuzzerConsole';
 import APIIntegrationDashboard from '@/pages/APIIntegrationDashboard';
-import SystemAudit from '@/pages/super-admin/SystemAudit';
+const SystemAudit = () => { window.location.replace('/control-panel/audit'); return null; };
 import ServerManagerDashboard from '@/pages/server-manager/ServerManagerDashboard';
 import AIOptimizationConsole from '@/pages/ai-console/AIOptimizationConsole';
 import SecureMarketingManagerDashboard from '@/pages/marketing-manager/SecureMarketingManagerDashboard';
