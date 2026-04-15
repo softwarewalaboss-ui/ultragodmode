@@ -141,15 +141,9 @@ export const LazyValaAIHeadWorkspace = createLazyRoute(() => import('@/pages/val
 export const LazyValaMasterWorkspace = createLazyRoute(() => import('@/pages/vala-control/ValaMasterWorkspace'));
 
 // ============================================
-// FRANCHISE ROUTES
+// FRANCHISE ROUTES (removed - redirected to /control-panel/franchise)
 // ============================================
 export const LazyFranchiseLayout = createLazyRoute(() => import('@/components/layouts/FranchiseLayout'));
-export const LazyFranchiseDashboardPage = createLazyRoute(() => import('@/pages/franchise/Dashboard'));
-export const LazyFranchiseProfile = createLazyRoute(() => import('@/pages/franchise/Profile'));
-export const LazyFranchiseWalletPage = createLazyRoute(() => import('@/pages/franchise/Wallet'));
-export const LazyFranchiseManagement = createLazyRoute(() => import('@/pages/FranchiseManagement'));
-export const LazyFranchiseLanding = createLazyRoute(() => import('@/pages/FranchiseLanding'));
-export const LazyFranchiseDashboard = createLazyRoute(() => import('@/pages/FranchiseDashboard'));
 
 // ============================================
 // ROLE DASHBOARDS
