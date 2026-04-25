@@ -548,6 +548,9 @@ const RoleSwitchDashboard = () => {
       case "settings":
         // Settings Dashboard - profile, notifications, logout
         return <SettingsDashboard />;
+      case "hr_manager":
+        // HR Manager Dashboard - hiring, employees, training
+        return <HRDashboard />;
       case null:
         // Control Panel view - render 2×7 grid dashboard
         return <ControlPanelDashboard />;
