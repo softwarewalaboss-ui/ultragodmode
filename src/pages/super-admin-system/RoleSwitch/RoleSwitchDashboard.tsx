@@ -548,7 +548,7 @@ const RoleSwitchDashboard = () => {
       case "settings":
         // Settings Dashboard - profile, notifications, logout
         return <SettingsDashboard />;
-      case "hr_manager":
+      case "hr_manager" as ActiveRole:
         // HR Manager Dashboard - hiring, employees, training
         return <HRDashboard />;
       case null:
