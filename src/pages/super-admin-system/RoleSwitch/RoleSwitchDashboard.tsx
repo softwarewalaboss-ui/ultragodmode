@@ -51,6 +51,7 @@ import AAMEnterpriseLayout from "@/components/api-ai-manager/AAMEnterpriseLayout
 import SecurityDashboard from "@/components/control-panel/SecurityDashboard";
 import SettingsDashboard from "@/components/control-panel/SettingsDashboard";
 import HomeDashboard from "@/components/control-panel/HomeDashboard";
+import HRDashboard from "@/components/hr/HRDashboard";
 import DemoManagerFullLayout from "@/components/demo-manager/DemoManagerFullLayout";
 import CEODashboard from "./CEODashboard";
 import CEOSidebar from "@/components/ceo/CEOSidebar";
@@ -547,6 +548,9 @@ const RoleSwitchDashboard = () => {
       case "settings":
         // Settings Dashboard - profile, notifications, logout
         return <SettingsDashboard />;
+      case "hr_manager" as ActiveRole:
+        // HR Manager Dashboard - hiring, employees, training
+        return <HRDashboard />;
       case null:
         // Control Panel view - render 2×7 grid dashboard
         return <ControlPanelDashboard />;
