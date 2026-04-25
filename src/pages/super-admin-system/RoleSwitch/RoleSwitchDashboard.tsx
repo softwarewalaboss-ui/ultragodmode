@@ -51,6 +51,7 @@ import AAMEnterpriseLayout from "@/components/api-ai-manager/AAMEnterpriseLayout
 import SecurityDashboard from "@/components/control-panel/SecurityDashboard";
 import SettingsDashboard from "@/components/control-panel/SettingsDashboard";
 import HomeDashboard from "@/components/control-panel/HomeDashboard";
+import HRDashboard from "@/components/hr/HRDashboard";
 import DemoManagerFullLayout from "@/components/demo-manager/DemoManagerFullLayout";
 import CEODashboard from "./CEODashboard";
 import CEOSidebar from "@/components/ceo/CEOSidebar";
