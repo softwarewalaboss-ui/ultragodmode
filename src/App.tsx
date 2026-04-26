@@ -19,7 +19,7 @@ import CategoryOnboarding from "@/pages/CategoryOnboarding";
 import ChangePassword from "@/pages/auth/ChangePassword";
 import ChildcareDemo from "@/pages/demos/ChildcareDemo";
 import ClientPortal from "@/pages/ClientPortal";
-import Dashboard from "@/components/franchise-landing/DashboardPreview";
+
 import DemoDirectory from "@/pages/DemoDirectory";
 import DemoLogin from "@/pages/DemoLogin";
 import { DemoTestModeProvider } from "@/contexts/DemoTestModeContext";
@@ -143,7 +143,7 @@ const App = () => (
               <Route path="/showcase" element={<PremiumDemoShowcaseNew />} />
               <Route path="/server-portal" element={<RequireAuth><ServerManagementPortal /></RequireAuth>} />
               <Route path="/auth" element={<Auth />} />
-              <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/dashboard" element={<Navigate to="/control-panel/boss-panel" replace />} />
               {/* Basic profile route to satisfy header navigation */}
               <Route path="/profile" element={<RequireAuth><SettingsPage /></RequireAuth>} />
               <Route path="/pending-approval" element={<PendingApproval />} />
