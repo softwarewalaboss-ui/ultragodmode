@@ -3,7 +3,7 @@ import ResellerHero from '@/components/reseller-landing/ResellerHero';
 import ResellerBenefits from '@/components/reseller-landing/ResellerBenefits';
 import CommissionSimulator from '@/components/reseller-landing/CommissionSimulator';
 import SellingTools from '@/components/reseller-landing/SellingTools';
-import ResellerDashboardPreview from '@/components/reseller-landing/ResellerDashboardPreview';
+
 import LeadFlowSystem from '@/components/reseller-landing/LeadFlowSystem';
 import ResellerCTA from '@/components/reseller-landing/ResellerCTA';
 import ResellerNav from '@/components/reseller-landing/ResellerNav';
@@ -19,7 +19,7 @@ const ResellerLanding = () => {
       <ResellerBenefits />
       <CommissionSimulator />
       <SellingTools />
-      <ResellerDashboardPreview />
+      
       <LeadFlowSystem />
       <ResellerCTA />
       <ResellerFooter />
