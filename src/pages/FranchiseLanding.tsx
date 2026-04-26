@@ -3,7 +3,7 @@ import FranchiseHero from '@/components/franchise-landing/FranchiseHero';
 import ValuePropositionCards from '@/components/franchise-landing/ValuePropositionCards';
 import EarningModel from '@/components/franchise-landing/EarningModel';
 import FeaturesHexGrid from '@/components/franchise-landing/FeaturesHexGrid';
-import DashboardPreview from '@/components/franchise-landing/DashboardPreview';
+
 import ApplicationProcess from '@/components/franchise-landing/ApplicationProcess';
 import FranchiseCTA from '@/components/franchise-landing/FranchiseCTA';
 import FranchiseLandingNav from '@/components/franchise-landing/FranchiseLandingNav';
@@ -19,7 +19,7 @@ const FranchiseLanding = () => {
       <ValuePropositionCards />
       <EarningModel />
       <FeaturesHexGrid />
-      <DashboardPreview />
+      
       <ApplicationProcess />
       <FranchiseCTA />
       <FranchiseLandingFooter />
