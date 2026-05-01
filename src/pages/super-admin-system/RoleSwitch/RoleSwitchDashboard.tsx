@@ -539,6 +539,12 @@ const RoleSwitchDashboard = () => {
       case "basic_user_dashboard":
         // Basic User Dashboard - placeholder
         return <ControlPanelDashboard />;
+      case "reseller_dashboard":
+        // Reseller Dashboard - same as reseller_manager
+        return <ResellerManagerFullView onBack={() => setActiveRole("boss_owner")} />;
+      case "franchise_dashboard":
+        // Franchise Dashboard - same as franchise_manager
+        return <FranchiseManagerView />;
       case "home":
         // Home Dashboard with welcome & quick actions
         return <HomeDashboard />;
