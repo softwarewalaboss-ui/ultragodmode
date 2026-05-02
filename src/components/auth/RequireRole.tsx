@@ -40,7 +40,7 @@ const logUnauthorizedAccess = async (
   }
 };
 
-export default function RequireRole({ allowed, children, masterOnly = false }: RequireRoleProps) {
+function RequireRoleInner({ allowed, children, masterOnly = false }: RequireRoleProps, _ref?: React.Ref<unknown>) {
   const { user, userRole, userRoles, approvedRoles, loading, approvalStatus, isBossOwner, isCEO, wasForceLoggedOut, switchRole } = useAuth();
   const location = useLocation();
   const hasLoggedRef = useRef(false);
