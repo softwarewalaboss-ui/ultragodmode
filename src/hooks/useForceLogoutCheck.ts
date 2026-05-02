@@ -63,36 +63,53 @@ export function useForceLogoutCheck() {
   // Subscribe to realtime force logout events
   useEffect(() => {
     let channel: ReturnType<typeof supabase.channel> | null = null;
+    let cancelled = false;
 
     const setupRealtimeSubscription = async () => {
-      const { data: { user } } = await supabase.auth.getUser();
-      if (!user) return;
+      try {
+        const { data: { user } } = await supabase.auth.getUser();
+        if (!user || cancelled) return;
 
-      channel = supabase
-        .channel('force-logout')
-        .on(
-          'postgres_changes',
+        // Unique channel name per user + mount to avoid "callbacks after subscribe" errors
+        // when the hook re-mounts (StrictMode, route changes, etc.)
+        const channelName = `force-logout:${user.id}:${Math.random().toString(36).slice(2, 8)}`;
+
+        const ch = supabase.channel(channelName);
+        ch.on(
+          'postgres_changes' as any,
           {
             event: 'UPDATE',
             schema: 'public',
             table: 'user_roles',
-            filter: `user_id=eq.${user.id}`
+            filter: `user_id=eq.${user.id}`,
           },
-          (payload) => {
-            const newData = payload.new as any;
-            if (newData.force_logged_out_at) {
+          (payload: any) => {
+            const newData = payload?.new;
+            if (newData?.force_logged_out_at) {
               checkForceLogout();
             }
-          }
-        )
-        .subscribe();
+          },
+        );
+
+        if (cancelled) return;
+        ch.subscribe();
+        channel = ch;
+      } catch (err) {
+        // Silent fail - realtime is non-critical
+      }
     };
 
     setupRealtimeSubscription();
 
     return () => {
+      cancelled = true;
       if (channel) {
-        supabase.removeChannel(channel);
+        try {
+          supabase.removeChannel(channel);
+        } catch {
+          // ignore
+        }
+        channel = null;
       }
     };
   }, [checkForceLogout]);
