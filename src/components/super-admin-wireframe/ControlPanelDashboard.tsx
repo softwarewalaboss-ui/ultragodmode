@@ -341,7 +341,7 @@ interface UniformBoxProps {
   index: number;
 }
 
-const UniformBoxComponent = React.forwardRef<HTMLDivElement, UniformBoxProps>(({ box, index }, ref) => {
+const UniformBoxComponent = forwardRef<HTMLDivElement, UniformBoxProps>(({ box, index }, ref) => {
   const Icon = box.icon;
   const Content = box.Component;
   
