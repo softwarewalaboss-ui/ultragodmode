@@ -176,3 +176,7 @@ function RequireRoleInner({ allowed, children, masterOnly = false }: RequireRole
 
   return <>{children}</>;
 }
+
+const RequireRole = forwardRef<unknown, RequireRoleProps>(RequireRoleInner as any);
+RequireRole.displayName = "RequireRole";
+export default RequireRole;
