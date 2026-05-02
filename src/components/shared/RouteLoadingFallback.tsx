@@ -9,20 +9,23 @@ import { Loader2, Rocket, Activity, AlertCircle, Construction } from "lucide-rea
 import { cn } from "@/lib/utils";
 
 // Loading skeleton for data fetching
-export const LoadingSkeleton = ({ message = "Loading data..." }: { message?: string }) => (
-  <div className="flex flex-col items-center justify-center min-h-[60vh]">
-    <motion.div
-      initial={{ opacity: 0, scale: 0.95 }}
-      animate={{ opacity: 1, scale: 1 }}
-      className="text-center p-8"
-    >
-      <div className="w-16 h-16 mx-auto mb-4 rounded-xl bg-primary/10 flex items-center justify-center">
-        <Loader2 className="w-8 h-8 text-primary animate-spin" />
-      </div>
-      <p className="text-sm text-muted-foreground">{message}</p>
-    </motion.div>
-  </div>
+export const LoadingSkeleton = React.forwardRef<HTMLDivElement, { message?: string }>(
+  ({ message = "Loading data..." }, ref) => (
+    <div ref={ref} className="flex flex-col items-center justify-center min-h-[60vh]">
+      <motion.div
+        initial={{ opacity: 0, scale: 0.95 }}
+        animate={{ opacity: 1, scale: 1 }}
+        className="text-center p-8"
+      >
+        <div className="w-16 h-16 mx-auto mb-4 rounded-xl bg-primary/10 flex items-center justify-center">
+          <Loader2 className="w-8 h-8 text-primary animate-spin" />
+        </div>
+        <p className="text-sm text-muted-foreground">{message}</p>
+      </motion.div>
+    </div>
+  ),
 );
+LoadingSkeleton.displayName = "LoadingSkeleton";
 
 // Coming Soon screen for features under development
 export const ComingSoonScreen = ({ 

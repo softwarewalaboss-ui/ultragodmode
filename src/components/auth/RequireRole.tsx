@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { ReactNode, useEffect, useMemo, useRef, useState } from "react";
+import React, { ReactNode, useEffect, useMemo, useRef, useState, forwardRef } from "react";
 import { Navigate, useLocation } from "react-router-dom";
 import { useAuth } from "@/hooks/useAuth";
 import { supabase } from "@/integrations/supabase/client";
@@ -40,7 +40,7 @@ const logUnauthorizedAccess = async (
   }
 };
 
-export default function RequireRole({ allowed, children, masterOnly = false }: RequireRoleProps) {
+function RequireRoleInner({ allowed, children, masterOnly = false }: RequireRoleProps, _ref?: React.Ref<unknown>) {
   const { user, userRole, userRoles, approvedRoles, loading, approvalStatus, isBossOwner, isCEO, wasForceLoggedOut, switchRole } = useAuth();
   const location = useLocation();
   const hasLoggedRef = useRef(false);
@@ -176,3 +176,7 @@ export default function RequireRole({ allowed, children, masterOnly = false }: R
 
   return <>{children}</>;
 }
+
+const RequireRole = forwardRef<unknown, RequireRoleProps>(RequireRoleInner as any);
+RequireRole.displayName = "RequireRole";
+export default RequireRole;

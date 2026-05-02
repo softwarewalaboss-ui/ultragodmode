@@ -341,12 +341,13 @@ interface UniformBoxProps {
   index: number;
 }
 
-const UniformBoxComponent: React.FC<UniformBoxProps> = ({ box, index }) => {
+const UniformBoxComponent = forwardRef<HTMLDivElement, UniformBoxProps>(({ box, index }, ref) => {
   const Icon = box.icon;
   const Content = box.Component;
   
   return (
     <div
+      ref={ref}
       className={cn(
         BOX_HEIGHT,
         "rounded-xl p-4 flex flex-col overflow-hidden"
@@ -372,7 +373,8 @@ const UniformBoxComponent: React.FC<UniformBoxProps> = ({ box, index }) => {
       </div>
     </div>
   );
-};
+});
+UniformBoxComponent.displayName = 'UniformBoxComponent';
 const UniformBox = UniformBoxComponent;
 
 // ===== MAIN DASHBOARD - EXACT 2×7 GRID STRUCTURE =====
