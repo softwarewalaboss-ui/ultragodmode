@@ -217,7 +217,7 @@ const Auth = () => {
   );
 
   return (
-    <div className="min-h-[100dvh] flex items-center justify-center p-4 relative overflow-hidden" style={{
+    <div className="min-h-[100dvh] flex items-start lg:items-center justify-center p-4 relative overflow-y-auto" style={{
       background: 'linear-gradient(135deg, hsl(180, 25%, 92%) 0%, hsl(200, 30%, 95%) 50%, hsl(180, 20%, 90%) 100%)'
     }}>
       {/* Background blobs */}
