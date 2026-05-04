@@ -269,7 +269,7 @@ export function MarketplaceCatalog({ title, subtitle, audienceLabel }: Marketpla
 
   return (
     <div className="space-y-6">
-      <section className={`relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br ${activeGradient} p-6 shadow-2xl`}>
+      <section className={`relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br ${activeGradient} p-6 shadow-2xl transition-[background-image] duration-1000 ease-in-out`}>
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.18),transparent_30%),radial-gradient(circle_at_bottom_left,rgba(34,211,238,0.18),transparent_28%)]" />
         <div className="relative grid gap-6 lg:grid-cols-[1.3fr_0.9fr]">
           <div className="space-y-4">
@@ -406,7 +406,7 @@ export function MarketplaceCatalog({ title, subtitle, audienceLabel }: Marketpla
               const { basePrice, discountedPrice } = formatPrice(product, discountPercent);
               const canAffordWallet = walletBalance >= discountedPrice;
               return (
-                <Card key={product.product_id} className="group overflow-hidden border-slate-800 bg-slate-950/70 transition-all duration-300 hover:-translate-y-1 hover:border-cyan-400/40 hover:shadow-[0_24px_80px_rgba(8,145,178,0.18)] [content-visibility:auto]" style={{ containIntrinsicSize: '380px' }}>
+                <Card key={product.product_id} className="group flex h-full flex-col overflow-hidden border-slate-800 bg-slate-950/70 transition-all duration-300 hover:-translate-y-1 hover:border-cyan-400/40 hover:shadow-[0_24px_80px_rgba(8,145,178,0.18)] [content-visibility:auto]" style={{ containIntrinsicSize: '380px' }}>
                   <CardHeader className="space-y-4">
                     <div className="flex items-start justify-between gap-4">
                       <div>
@@ -419,13 +419,13 @@ export function MarketplaceCatalog({ title, subtitle, audienceLabel }: Marketpla
                     </div>
                     <p className="line-clamp-2 text-sm text-slate-400">{product.description || 'Production-ready business software with deployment and lifecycle support.'}</p>
                   </CardHeader>
-                  <CardContent className="space-y-4">
+                  <CardContent className="flex flex-1 flex-col space-y-4">
                     <div className="flex flex-wrap gap-2">
                       {product.features.slice(0, 4).map((feature) => (
                         <Badge key={feature} variant="outline" className="border-slate-800 bg-slate-900/80 text-slate-300">{feature}</Badge>
                       ))}
                     </div>
-                    <div className="rounded-2xl border border-slate-800 bg-slate-900/80 p-4">
+                    <div className="mt-auto rounded-2xl border border-slate-800 bg-slate-900/80 p-4">
                       <div className="flex items-center justify-between text-sm text-slate-400">
                         <span>Base price</span>
                         <span>{formatCurrency(basePrice)}</span>

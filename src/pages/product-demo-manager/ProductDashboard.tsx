@@ -129,9 +129,9 @@ const ProductDashboard = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.1 }}
             whileHover={{ scale: 1.02, y: -2 }}
-            className="group"
+            className="group h-full"
           >
-            <Card className={`bg-slate-900/50 border-slate-700/50 backdrop-blur-xl overflow-hidden hover:border-slate-600/50 transition-all duration-300 hover:shadow-xl ${stat.glow}`}>
+            <Card className={`h-full bg-slate-900/50 border-slate-700/50 backdrop-blur-xl overflow-hidden hover:border-slate-600/50 transition-all duration-300 hover:shadow-xl ${stat.glow}`}>
               <CardContent className="p-4 relative">
                 {isLoading ? (
                   <Skeleton className="h-16 w-full bg-slate-800" />
@@ -280,7 +280,7 @@ const ProductDashboard = () => {
                         </div>
                       </div>
                     </div>
-                    <div className="ml-13 pl-13">
+                    <div className="pl-[52px]">
                       <div className="flex items-center justify-between text-xs mb-1">
                         <span className="text-slate-400">Engagement</span>
                         <span className="text-cyan-400">{demo.engagement}%</span>
