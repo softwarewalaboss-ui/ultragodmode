@@ -80,8 +80,9 @@ const AddDemo = ({ onSuccess }: AddDemoProps) => {
       if (error) throw error;
 
       toast.success("Demo created successfully!", {
-        description: "Demo is now READ-ONLY and cannot be edited."
+        description: "Demo is live on the Marketplace and is now READ-ONLY."
       });
+      window.dispatchEvent(new CustomEvent('marketplace:catalog-changed'));
       onSuccess();
     } catch (error: any) {
       toast.error("Failed to create demo", { description: error.message });

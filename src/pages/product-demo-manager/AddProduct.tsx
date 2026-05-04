@@ -89,8 +89,9 @@ const AddProduct = ({ onSuccess }: AddProductProps) => {
       if (error) throw error;
 
       toast.success("Product created successfully!", {
-        description: "Product is now READ-ONLY and cannot be edited."
+        description: "Product is live on the Marketplace and is now READ-ONLY."
       });
+      window.dispatchEvent(new CustomEvent('marketplace:catalog-changed'));
       onSuccess();
     } catch (error: any) {
       toast.error("Failed to create product", { description: error.message });
