@@ -16,7 +16,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { MonitorPlay, AlertTriangle, Lock, Plus, Check } from "lucide-react";
+import { MonitorPlay, AlertTriangle, Lock, Plus, Check, Loader2 } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 import { cn } from "@/lib/utils";
 
@@ -252,7 +252,10 @@ const AddDemo = ({ onSuccess }: AddDemoProps) => {
                     className="flex-1 bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700"
                   >
                     {isSubmitting ? (
-                      "Creating..."
+                      <>
+                        <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                        Creating demo...
+                      </>
                     ) : (
                       <>
                         <Lock className="w-4 h-4 mr-2" />
