@@ -399,6 +399,28 @@ export function MarketplaceCatalog({ title, subtitle, audienceLabel }: Marketpla
             </div>
           ))}
         </div>
+      ) : products.length === 0 ? (
+        <div className="rounded-3xl border border-dashed border-slate-800 bg-slate-950/70 p-12 text-center">
+          <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl border border-slate-800 bg-slate-900/80 text-cyan-300">
+            <Package className="h-6 w-6" />
+          </div>
+          <h3 className="mt-4 text-lg font-semibold text-white">No products match your filters</h3>
+          <p className="mt-2 text-sm text-slate-400">
+            {search || category !== 'all'
+              ? 'Try clearing the search or selecting a different category.'
+              : 'New products added through Product Manager will appear here automatically.'}
+          </p>
+          {(search || category !== 'all') && (
+            <Button
+              type="button"
+              variant="outline"
+              className="mt-5 border-slate-800 bg-slate-900/80 hover:bg-slate-800"
+              onClick={() => { setSearchInput(''); setSearch(''); setCategory('all'); }}
+            >
+              Reset filters
+            </Button>
+          )}
+        </div>
       ) : (
         <>
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2 2xl:grid-cols-3">
