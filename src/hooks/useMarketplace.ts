@@ -343,6 +343,18 @@ export function useMarketplace() {
     void fetchOrders();
   }, [fetchOrders]);
 
+  // Auto-refresh catalog when window regains focus or a product/demo is added
+  useEffect(() => {
+    const onFocus = () => { void fetchCatalog(1, false); };
+    const onCatalogChanged = () => { void fetchCatalog(1, false); };
+    window.addEventListener('focus', onFocus);
+    window.addEventListener('marketplace:catalog-changed', onCatalogChanged);
+    return () => {
+      window.removeEventListener('focus', onFocus);
+      window.removeEventListener('marketplace:catalog-changed', onCatalogChanged);
+    };
+  }, [fetchCatalog]);
+
   const fetchFavourites = useCallback(async () => {
     try {
       const { data: authData } = await supabase.auth.getUser();

@@ -17,7 +17,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Package, AlertTriangle, Lock, Plus } from "lucide-react";
+import { Package, AlertTriangle, Lock, Plus, Loader2 } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 
 const productSchema = z.object({
@@ -89,8 +89,9 @@ const AddProduct = ({ onSuccess }: AddProductProps) => {
       if (error) throw error;
 
       toast.success("Product created successfully!", {
-        description: "Product is now READ-ONLY and cannot be edited."
+        description: "Product is live on the Marketplace and is now READ-ONLY."
       });
+      window.dispatchEvent(new CustomEvent('marketplace:catalog-changed'));
       onSuccess();
     } catch (error: any) {
       toast.error("Failed to create product", { description: error.message });
@@ -251,7 +252,10 @@ const AddProduct = ({ onSuccess }: AddProductProps) => {
                 className="flex-1 bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-700 hover:to-purple-700"
               >
                 {isSubmitting ? (
-                  "Creating..."
+                  <>
+                    <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                    Creating product...
+                  </>
                 ) : (
                   <>
                     <Lock className="w-4 h-4 mr-2" />

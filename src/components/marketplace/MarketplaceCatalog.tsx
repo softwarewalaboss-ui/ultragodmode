@@ -104,18 +104,8 @@ export function MarketplaceCatalog({ title, subtitle, audienceLabel }: Marketpla
     setSearch(deferredSearch);
   }, [deferredSearch, setSearch]);
 
-  useEffect(() => {
-    const interval = window.setInterval(() => {
-      setHeroIndex((current) => {
-        if (categories.length <= 1) {
-          return 0;
-        }
-        return (current + 1) % Math.min(categories.length - 1, heroGradients.length);
-      });
-    }, 5000);
-
-    return () => window.clearInterval(interval);
-  }, [categories.length]);
+  // Auto-slide intentionally disabled — hero rotates only via manual interaction
+  // to prevent flicker / color jumps. Use scrollCategories arrows to advance.
 
   useEffect(() => {
     if (!sentinelRef.current || !hasMore) {

@@ -16,7 +16,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { MonitorPlay, AlertTriangle, Lock, Plus, Check } from "lucide-react";
+import { MonitorPlay, AlertTriangle, Lock, Plus, Check, Loader2 } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 import { cn } from "@/lib/utils";
 
@@ -80,8 +80,9 @@ const AddDemo = ({ onSuccess }: AddDemoProps) => {
       if (error) throw error;
 
       toast.success("Demo created successfully!", {
-        description: "Demo is now READ-ONLY and cannot be edited."
+        description: "Demo is live on the Marketplace and is now READ-ONLY."
       });
+      window.dispatchEvent(new CustomEvent('marketplace:catalog-changed'));
       onSuccess();
     } catch (error: any) {
       toast.error("Failed to create demo", { description: error.message });
@@ -252,7 +253,10 @@ const AddDemo = ({ onSuccess }: AddDemoProps) => {
                     className="flex-1 bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700"
                   >
                     {isSubmitting ? (
-                      "Creating..."
+                      <>
+                        <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                        Creating demo...
+                      </>
                     ) : (
                       <>
                         <Lock className="w-4 h-4 mr-2" />
