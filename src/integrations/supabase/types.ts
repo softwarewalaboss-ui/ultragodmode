@@ -395,63 +395,135 @@ export type Database = {
       }
       products: {
         Row: {
+          additional_files: Json | null
           business_category_id: string | null
           category: string | null
+          changelog: string | null
+          compatibility: string | null
           created_at: string
           created_by: string | null
+          demo_credentials: Json | null
+          demo_embed: string | null
+          demo_type: string | null
+          demo_url: string | null
+          demo_video_url: string | null
           description: string | null
+          discount_price: number | null
+          documentation_url: string | null
           features_json: Json | null
+          gallery_urls: string[] | null
           is_active: boolean | null
+          is_featured: boolean | null
+          is_free: boolean | null
+          license_type: string | null
           lifetime_price: number | null
+          main_file_url: string | null
+          meta_description: string | null
+          meta_keywords: string | null
+          meta_title: string | null
           monthly_price: number | null
+          preview_urls: string[] | null
           pricing_model: string | null
           product_id: string
           product_name: string
           product_type: string | null
+          short_description: string | null
+          slug: string | null
           status: string | null
           subcategory_id: string | null
+          support_url: string | null
+          tags: string[] | null
           thumbnail_url: string | null
           updated_at: string
+          version: string | null
           visibility: string | null
         }
         Insert: {
+          additional_files?: Json | null
           business_category_id?: string | null
           category?: string | null
+          changelog?: string | null
+          compatibility?: string | null
           created_at?: string
           created_by?: string | null
+          demo_credentials?: Json | null
+          demo_embed?: string | null
+          demo_type?: string | null
+          demo_url?: string | null
+          demo_video_url?: string | null
           description?: string | null
+          discount_price?: number | null
+          documentation_url?: string | null
           features_json?: Json | null
+          gallery_urls?: string[] | null
           is_active?: boolean | null
+          is_featured?: boolean | null
+          is_free?: boolean | null
+          license_type?: string | null
           lifetime_price?: number | null
+          main_file_url?: string | null
+          meta_description?: string | null
+          meta_keywords?: string | null
+          meta_title?: string | null
           monthly_price?: number | null
+          preview_urls?: string[] | null
           pricing_model?: string | null
           product_id?: string
           product_name: string
           product_type?: string | null
+          short_description?: string | null
+          slug?: string | null
           status?: string | null
           subcategory_id?: string | null
+          support_url?: string | null
+          tags?: string[] | null
           thumbnail_url?: string | null
           updated_at?: string
+          version?: string | null
           visibility?: string | null
         }
         Update: {
+          additional_files?: Json | null
           business_category_id?: string | null
           category?: string | null
+          changelog?: string | null
+          compatibility?: string | null
           created_at?: string
           created_by?: string | null
+          demo_credentials?: Json | null
+          demo_embed?: string | null
+          demo_type?: string | null
+          demo_url?: string | null
+          demo_video_url?: string | null
           description?: string | null
+          discount_price?: number | null
+          documentation_url?: string | null
           features_json?: Json | null
+          gallery_urls?: string[] | null
           is_active?: boolean | null
+          is_featured?: boolean | null
+          is_free?: boolean | null
+          license_type?: string | null
           lifetime_price?: number | null
+          main_file_url?: string | null
+          meta_description?: string | null
+          meta_keywords?: string | null
+          meta_title?: string | null
           monthly_price?: number | null
+          preview_urls?: string[] | null
           pricing_model?: string | null
           product_id?: string
           product_name?: string
           product_type?: string | null
+          short_description?: string | null
+          slug?: string | null
           status?: string | null
           subcategory_id?: string | null
+          support_url?: string | null
+          tags?: string[] | null
           thumbnail_url?: string | null
           updated_at?: string
+          version?: string | null
           visibility?: string | null
         }
         Relationships: []
