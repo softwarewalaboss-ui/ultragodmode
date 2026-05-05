@@ -47,6 +47,116 @@ export type Database = {
         }
         Relationships: []
       }
+      business_categories: {
+        Row: {
+          created_at: string
+          description: string | null
+          display_order: number | null
+          id: string
+          is_active: boolean | null
+          name: string
+          slug: string | null
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          description?: string | null
+          display_order?: number | null
+          id?: string
+          is_active?: boolean | null
+          name: string
+          slug?: string | null
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          description?: string | null
+          display_order?: number | null
+          id?: string
+          is_active?: boolean | null
+          name?: string
+          slug?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      business_subcategories: {
+        Row: {
+          category_id: string | null
+          created_at: string
+          display_order: number | null
+          id: string
+          is_active: boolean | null
+          name: string
+          slug: string | null
+        }
+        Insert: {
+          category_id?: string | null
+          created_at?: string
+          display_order?: number | null
+          id?: string
+          is_active?: boolean | null
+          name: string
+          slug?: string | null
+        }
+        Update: {
+          category_id?: string | null
+          created_at?: string
+          display_order?: number | null
+          id?: string
+          is_active?: boolean | null
+          name?: string
+          slug?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "business_subcategories_category_id_fkey"
+            columns: ["category_id"]
+            isOneToOne: false
+            referencedRelation: "business_categories"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      demos: {
+        Row: {
+          category: string | null
+          created_at: string
+          created_by: string | null
+          description: string | null
+          id: string
+          status: string | null
+          thumbnail_url: string | null
+          title: string
+          updated_at: string
+          url: string | null
+        }
+        Insert: {
+          category?: string | null
+          created_at?: string
+          created_by?: string | null
+          description?: string | null
+          id?: string
+          status?: string | null
+          thumbnail_url?: string | null
+          title: string
+          updated_at?: string
+          url?: string | null
+        }
+        Update: {
+          category?: string | null
+          created_at?: string
+          created_by?: string | null
+          description?: string | null
+          id?: string
+          status?: string | null
+          thumbnail_url?: string | null
+          title?: string
+          updated_at?: string
+          url?: string | null
+        }
+        Relationships: []
+      }
       developers: {
         Row: {
           availability_status: string | null
@@ -231,6 +341,120 @@ export type Database = {
             referencedColumns: ["id"]
           },
         ]
+      }
+      product_action_logs: {
+        Row: {
+          action: string
+          action_details: Json | null
+          created_at: string
+          id: string
+          performed_by: string | null
+          product_id: string | null
+          product_name: string | null
+        }
+        Insert: {
+          action: string
+          action_details?: Json | null
+          created_at?: string
+          id?: string
+          performed_by?: string | null
+          product_id?: string | null
+          product_name?: string | null
+        }
+        Update: {
+          action?: string
+          action_details?: Json | null
+          created_at?: string
+          id?: string
+          performed_by?: string | null
+          product_id?: string | null
+          product_name?: string | null
+        }
+        Relationships: []
+      }
+      product_demo_mappings: {
+        Row: {
+          created_at: string
+          demo_id: string
+          id: string
+          product_id: string
+        }
+        Insert: {
+          created_at?: string
+          demo_id: string
+          id?: string
+          product_id: string
+        }
+        Update: {
+          created_at?: string
+          demo_id?: string
+          id?: string
+          product_id?: string
+        }
+        Relationships: []
+      }
+      products: {
+        Row: {
+          business_category_id: string | null
+          category: string | null
+          created_at: string
+          created_by: string | null
+          description: string | null
+          features_json: Json | null
+          is_active: boolean | null
+          lifetime_price: number | null
+          monthly_price: number | null
+          pricing_model: string | null
+          product_id: string
+          product_name: string
+          product_type: string | null
+          status: string | null
+          subcategory_id: string | null
+          thumbnail_url: string | null
+          updated_at: string
+          visibility: string | null
+        }
+        Insert: {
+          business_category_id?: string | null
+          category?: string | null
+          created_at?: string
+          created_by?: string | null
+          description?: string | null
+          features_json?: Json | null
+          is_active?: boolean | null
+          lifetime_price?: number | null
+          monthly_price?: number | null
+          pricing_model?: string | null
+          product_id?: string
+          product_name: string
+          product_type?: string | null
+          status?: string | null
+          subcategory_id?: string | null
+          thumbnail_url?: string | null
+          updated_at?: string
+          visibility?: string | null
+        }
+        Update: {
+          business_category_id?: string | null
+          category?: string | null
+          created_at?: string
+          created_by?: string | null
+          description?: string | null
+          features_json?: Json | null
+          is_active?: boolean | null
+          lifetime_price?: number | null
+          monthly_price?: number | null
+          pricing_model?: string | null
+          product_id?: string
+          product_name?: string
+          product_type?: string | null
+          status?: string | null
+          subcategory_id?: string | null
+          thumbnail_url?: string | null
+          updated_at?: string
+          visibility?: string | null
+        }
+        Relationships: []
       }
       profiles: {
         Row: {
